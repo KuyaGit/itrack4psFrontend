@@ -19,7 +19,7 @@ const routes: Routes = [
       component: DashboardComponent
     },
     {
-      path: 'beneficiaryform',
+      path: 'beneficiary-form',
       component: BeneficiaryFormComponent
     },
     {
