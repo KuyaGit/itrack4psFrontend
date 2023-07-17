@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
-
-
 import { HomeComponent } from './home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-form.component';
@@ -19,7 +16,7 @@ const routes: Routes = [
       component: DashboardComponent
     },
     {
-      path: 'beneficiary-form',
+      path: 'beneficiary',
       component: BeneficiaryFormComponent
     },
     {
@@ -36,3 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class HomeRoutingModule { }
+
