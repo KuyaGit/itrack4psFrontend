@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-form.component';
+//import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
+import { BeneficiariesFormComponent } from './pages/beneficiaries-form/beneficiaries-form.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    BeneficiaryFormComponent,
     DashboardComponent,
+    //ProfileSettingComponent,
   ],
-  imports: [
-    CommonModule,
-    HomeRoutingModule,
+ imports: [
+  CommonModule,
+  IonicModule.forRoot(),
+  HomeRoutingModule,
+]
 
-  ]
 })
 export class HomeModule { }
