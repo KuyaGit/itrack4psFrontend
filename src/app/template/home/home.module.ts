@@ -13,7 +13,6 @@ import { BeneficiariesFormComponent } from './pages/beneficiaries-form/beneficia
     HomeComponent,
     DashboardComponent,
     //ProfileSettingComponent,
-    BeneficiariesFormComponent,
   ],
  imports: [
   CommonModule,
