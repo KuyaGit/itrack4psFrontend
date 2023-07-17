@@ -1,0 +1,131 @@
+<head>
+    <title>Beneficiaries Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>Beneficiaries Form</header>
+  
+      <form action="#">
+        <div class="form first">
+          <div class="details personal">
+            <span class="title">Personal Details</span>
+  
+            <div class="fields">
+              <div class="input-field">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" required [(ngModel)]="fullName">
+              </div>
+  
+              <div class="input-field">
+                <label>Date of Birth</label>
+                <input type="date" placeholder="Enter birth date" required [(ngModel)]="dateOfBirth">
+              </div>
+  
+              <div class="input-field">
+                <label>Email</label>
+                <input type="text" placeholder="Enter your email" required [(ngModel)]="email">
+              </div>
+  
+              <div class="input-field">
+                <label>Mobile Number</label>
+                <input type="number" placeholder="Enter mobile number" required [(ngModel)]="mobileNumber">
+              </div>
+  
+              <div class="input-field">
+                <label>Gender</label>
+                <select required [(ngModel)]="gender">
+                  <option disabled selected>Select gender</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Others</option>
+                </select>
+              </div>
+  
+              <div class="input-field">
+                <label>Occupation</label>
+                <input type="text" placeholder="Enter your occupation" required [(ngModel)]="occupation">
+              </div>
+            </div>
+          </div>
+  
+          <div class="details ID">
+            <span class="title">Identity Details</span>
+  
+            <div class="fields">
+              <div class="input-field">
+                <label>ID Type</label>
+                <input type="text" placeholder="Enter ID type" required [(ngModel)]="idType">
+              </div>
+  
+              <div class="input-field">
+                <label>Household ID</label>
+                <input type="number" placeholder="Enter ID number" required [(ngModel)]="householdID">
+              </div>
+            </div>
+  
+            <button class="nextBtn">
+              <span class="btnText">Next</span>
+              <i class="uil uil-navigator"></i>
+            </button>
+          </div>
+        </div>
+  
+        <div class="form second">
+          <div class="details address">
+            <span class="title">Address Details</span>
+  
+            <div class="fields">
+              <div class="input-field">
+                <label>Address Type</label>
+                <input type="text" placeholder="Permanent or Temporary" required [(ngModel)]="addressType">
+              </div>
+  
+              <div class="input-field">
+                <label>Nationality</label>
+                <input type="text" placeholder="Enter nationality" required [(ngModel)]="nationality">
+              </div>
+  
+              <div class="input-field">
+                <label>State</label>
+                <input type="text" placeholder="Enter your state" required [(ngModel)]="state">
+              </div>
+  
+              <div class="input-field">
+                <label>District</label>
+                <input type="text" placeholder="Enter your district" required [(ngModel)]="district">
+              </div>
+            </div>
+          </div>
+  
+          <div class="details family">
+            <span class="title">Family Details</span>
+  
+            <div class="fields">
+              <div class="input-field">
+                <label>Father Name</label>
+                <input type="text" placeholder="Enter father name" required [(ngModel)]="fatherName">
+              </div>
+  
+              <div class="input-field">
+                <label>Mother Name</label>
+                <input type="text" placeholder="Enter mother name" required [(ngModel)]="motherName">
+              </div>
+            </div>
+  
+            <div class="buttons">
+              <div class="backBtn">
+                <i class="uil uil-navigator"></i>
+                <span class="btnText">Back</span>
+              </div>
+  
+              <button class="submit" (click)="onSubmit()">
+                <span class="btnText">Submit</span>
+                <i class="uil uil-navigator"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  
