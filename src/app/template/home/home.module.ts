@@ -12,6 +12,7 @@ import { BeneficiariesFormComponent } from './pages/beneficiaries-form/beneficia
   declarations: [
     HomeComponent,
     DashboardComponent,
+    
     //ProfileSettingComponent,
   ],
  imports: [

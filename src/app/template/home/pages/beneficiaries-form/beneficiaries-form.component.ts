@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-beneficiaries-form',
@@ -6,36 +7,43 @@ import { Component } from '@angular/core';
   styleUrls: ['./beneficiaries-form.component.scss']
 })
 export class BeneficiariesFormComponent {
-  fullName = '';
-  dateOfBirth = '';
-  email = '';
-  mobileNumber = '';
-  gender = '';
-  occupation = '';
-  idType = '';
-  householdID = '';
-  addressType = '';
-  nationality = '';
-  state = '';
-  district = '';
-  fatherName = '';
-  motherName = '';
+  formGroup: FormGroup;
+  currentStep = 1;
 
-  onSubmit(): void {
-    console.log('Form submitted');
-    console.log('Full Name:', this.fullName);
-    console.log('Date of Birth:', this.dateOfBirth);
-    console.log('Email:', this.email);
-    console.log('Mobile Number:', this.mobileNumber);
-    console.log('Gender:', this.gender);
-    console.log('Occupation:', this.occupation);
-    console.log('ID Type:', this.idType);
-    console.log('Household ID:', this.householdID);
-    console.log('Address Type:', this.addressType);
-    console.log('Nationality:', this.nationality);
-    console.log('State:', this.state);
-    console.log('District:', this.district);
-    console.log('Father Name:', this.fatherName);
-    console.log('Mother Name:', this.motherName);
+  constructor(private formBuilder: FormBuilder) {
+    this.formGroup = this.formBuilder.group({
+      personal: this.formBuilder.group({
+        // Define personal form fields with validators
+      }),
+      identity: this.formBuilder.group({
+        // Define identity form fields with validators
+      }),
+      address: this.formBuilder.group({
+        // Define address form fields with validators
+      }),
+      family: this.formBuilder.group({
+        // Define family form fields with validators
+      })
+    });
+  }
+
+  isFormValid(): boolean {
+    return this.formGroup.valid;
+  }
+
+  goNext(): void {
+    if (this.isFormValid()) {
+      this.currentStep = 2;
+    }
+  }
+
+  goBack(): void {
+    this.currentStep = 1;
+  }
+
+  submitForm(): void {
+    if (this.isFormValid()) {
+      // Handle form submission logic
+    }
   }
 }
