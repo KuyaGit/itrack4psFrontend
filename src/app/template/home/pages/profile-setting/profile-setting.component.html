@@ -1,0 +1,29 @@
+<div>
+  <title>Profile Settings</title>
+  <form (ngSubmit)="updateForm()">
+    <div>
+      <body class="container">
+      <h2>Profile Setting</h2>
+      <div>
+        <div class="input-field">
+          <label for="fullname">Full Name</label>
+          <input type="text" name="fullname" id="fullname">
+        </div>
+        <div class="input-field">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email">
+        </div>
+        <div class="input-field">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password">
+        </div>
+        <div class="input-field">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" name="confirmPassword" id="confirmPassword">
+        </div>
+      </div>
+      <button type="submit" class="btn-primary">Update</button>
+    </body>
+  </div>
+  </form>
+</div>
