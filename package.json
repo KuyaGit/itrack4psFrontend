@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href /itrack4psFrontend/",
+    "build": "ng build --configuration production --base-href https://kuyagit.github.io/itrack4psFrontend/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
