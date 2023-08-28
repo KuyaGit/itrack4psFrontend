@@ -1,32 +1,28 @@
-<body>
+
   <nav class="sidebar" [class.close]="isSidebarClosed">
     <header>
       <div class="image-text">
         <span class="image">
-          <img src="asset/logo.png" alt="logo">
+          <img src="assets/navbar/logo.png" alt="logo">
         </span>
         <div class="text header-text">
           <span class="name">Itrack4ps</span>
           <span class="title">Monitoring System</span>
-        </div>~
+        </div>
       </div>
       <i class='bx bx-chevron-right toggle' (click)="toggleSidebar()"></i>
     </header>
     <div class="menu-bar">
       <div class="menu">
-        <li class="search-box">
-          <i class='bx bx-search icon'></i>
-          <input type="text" placeholder="Search....">
-        </li>
         <ul class="menu-links">
           <li class="nav-link">
-            <a href="#">
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/dashboard">
               <i class='bx bx-home-alt icon'></i>
               <span class="text nav-text">Dashboard</span>
             </a>
           </li>
           <li class="nav-link">
-            <a href="#">
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/beneficiary">
               <i class='bx bx-money-withdraw icon'></i>
               <span class="text nav-text">Beneficiaries</span>
             </a>
@@ -55,8 +51,7 @@
       </div>
     </div>
   </nav>
-  <section class="home">
-    <div class="text">Itrack4ps</div>
-  </section>
-</body>
-<router-outlet></router-outlet>
+  <div class="home">
+    <router-outlet></router-outlet>
+  </div>
+

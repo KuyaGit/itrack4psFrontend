@@ -10,7 +10,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #007E94;
+    background: var(--body-color);
 }
 .container{
     position: relative;

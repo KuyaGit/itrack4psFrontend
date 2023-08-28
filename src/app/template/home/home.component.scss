@@ -2,32 +2,6 @@
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 
-*{
-    font-family: 'Poppins',sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root{
-    --body-color: #E4E9F7;
-    --sidebar-color: #fff;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
-    --toggle-color: #DDD;
-    --text-color: #707070;
-
-    --tran-02: all 0.2s ease;
-    --tran-03: all 0.3s ease;
-    --tran-04: all 0.4s ease;
-    --tran-05: all 0.5s ease;
-}
-
-body{
-    height: 100vh;
-    background: var(--body-color);
-    transition: var(--tran-05);
-}
 
 
 .sidebar{
@@ -129,32 +103,17 @@ header .image-text .header-text{
     color: var(--sidebar-color);
     font-size: 22px;
     transition: var(--tran-03);
-} 
+}
 .sidebar.close header .toggle{
-   transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .sidebar .menu{
     margin-top: 35px;
 }
-.sidebar .search-box{
-    background: var(--primary-color-light);
-    border-radius: 6px;
-    transition: var(--tran-05);
-}
 
-.search-box input{
-    height: 100%;
-    width: 100%;
-    outline: none;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    background: var(--primary-color-light);
-    transition: var(--tran-05);
-    
-}
+
+
 .sidebar li a{
     height: 100%;
     width: 100%;
@@ -171,9 +130,11 @@ header .image-text .header-text{
 
 .sidebar li a:hover .icon,
 .sidebar li a:hover .text{
-   color: var(--sidebar-color);
+    color: var(--sidebar-color);
 }
-
+.sidebar li a.active{
+    background: var(--primary-color);
+}
 .sidebar .menu-bar{
     height: calc(100% - 50px);
     display: flex;
@@ -239,11 +200,11 @@ body.dark .switch::before{
 
 .home{
     position: relative;
-    left: 100vh;
+    left: 25vh;
     height: 250px;
     width: calc(100% - 250px);
     background: var(--body-color);
-    transition: var(--tran-05); 
+    transition: var(--tran-05);
 }
 
 .home .text{

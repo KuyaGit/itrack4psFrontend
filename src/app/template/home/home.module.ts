@@ -12,7 +12,6 @@ import { ProgressComponent } from './pages/progress/progress.component';
     HomeComponent,
     BeneficiaryFormComponent,
     DashboardComponent,
-    ProgressComponent,
   ],
   imports: [
     CommonModule,
