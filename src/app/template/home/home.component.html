@@ -1,7 +1,62 @@
-<p>home works!</p>
-<div class="nav">
-  <a routerLink="/home" routerLinkActive="active">Home</a>
-  <a routerLink="/about" routerLinkActive="active">About</a>
-  <a routerLink="/contact" routerLinkActive="active">Contact</a>
-</div>
+<body>
+  <nav class="sidebar" [class.close]="isSidebarClosed">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <img src="asset/logo.png" alt="logo">
+        </span>
+        <div class="text header-text">
+          <span class="name">Itrack4ps</span>
+          <span class="title">Monitoring System</span>
+        </div>~
+      </div>
+      <i class='bx bx-chevron-right toggle' (click)="toggleSidebar()"></i>
+    </header>
+    <div class="menu-bar">
+      <div class="menu">
+        <li class="search-box">
+          <i class='bx bx-search icon'></i>
+          <input type="text" placeholder="Search....">
+        </li>
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-money-withdraw icon'></i>
+              <span class="text nav-text">Beneficiaries</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-cog icon'></i>
+              <span class="text nav-text">Profile Settings</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-user-circle icon'></i>
+              <span class="text nav-text">User Management</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="bottom content">
+        <li>
+          <a href="#">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+      </div>
+    </div>
+  </nav>
+  <section class="home">
+    <div class="text">Itrack4ps</div>
+  </section>
+</body>
 <router-outlet></router-outlet>
