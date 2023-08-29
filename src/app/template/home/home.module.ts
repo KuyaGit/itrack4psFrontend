@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-form.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
+import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/hous
     BeneficiaryFormComponent,
     DashboardComponent,
     HouseholdbeneficiaryComponent,
+    UsermanagementComponent,
   ],
   imports: [
     CommonModule,
