@@ -11,9 +11,22 @@ export class ProfileSettingComponent {
   password: string = '';
   confirmPassword: string = '';
   secActive: boolean = false;
+  passwordSuccess: boolean = false;
+  infoSuccess: boolean = false;
 
-  updateForm() {
-    // Implement your form submission logic here
+  onPasswordSubmit() {
+    if (this.password !== this.confirmPassword) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+    this.passwordSuccess = true;
+    this.password = '';
+    this.confirmPassword = '';
   }
 
+  onInfoSubmit() {
+    this.infoSuccess = true;
+    this.name = '';
+    this.email = '';
+  }
 }
