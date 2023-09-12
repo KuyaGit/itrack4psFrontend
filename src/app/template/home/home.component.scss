@@ -217,4 +217,6 @@ body.dark .switch::before{
 .sidebar.close ~ .home{
     left: 88px;
     width: calc(100% - 88px);
+    padding: 0;
+
 }
