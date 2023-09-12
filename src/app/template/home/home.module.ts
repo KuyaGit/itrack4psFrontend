@@ -7,6 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-form.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,11 @@ import { UsermanagementComponent } from './pages/usermanagement/usermanagement.c
   imports: [
     CommonModule,
     HomeRoutingModule,
+    MatCardModule
+
 
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+
+}
