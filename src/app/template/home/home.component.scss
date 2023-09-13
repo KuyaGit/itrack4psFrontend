@@ -2,23 +2,49 @@
 @import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 
+*{
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+mat-toolbar{
+  background: var(--sidebar-color);
+  color: #fff;
+  .toolbar{
+    padding: 1px;
+    margin: 1px
+  }
+}
+mat-divider{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
 
+mat-sidenav{
+  border-right: none;
+  text-align: center;
+  background: var(--sidebar-color);
+  height: 100vh;
+}
+mat-sidenav-container{
+  height: calc(100vh - 65px)
+}
 
+.content{
+  height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+}
+.logo{
+  margin-top: 16px;
+  width: 100px;
+  height: 100px;
+}
 .sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
+    position: absolute;
     padding: 10px 14px;
     background: var(--sidebar-color);
-    transition: var(--tran-05);
-    z-index: 100;
 }
-.sidebar.close {
-    width: 88px;
-}
-/*========================*/
 
 .sidebar .text{
     font-size: 16px;
@@ -27,15 +53,6 @@
     transition: var(--tran-04);
     white-space: nowrap;
     opacity: 1;
-}
-.sidebar.close .text{
-    opacity: 0;
-}
-.sidebar .image{
-    min-width: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 /*========================*/
@@ -65,12 +82,9 @@
     position: relative;
 }
 
-.sidebar .image-text img{
-    width: 40px;
-    border-radius: 6px;
-}
 
-.sidebar header .image-text{
+
+.sidebar header .image-text .header-text{
     display: flex;
     align-items: center;
 }
@@ -88,29 +102,9 @@ header .image-text .header-text{
    margin-top: -2px;
 }
 
-.sidebar header .toggle{
-    position: absolute;
-    top: 50%;
-    right: -25px;
-    transform: translateY(-50%) rotate(180deg);
-    height: 25px;
-    width: 25px;
-    background: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: var(--sidebar-color);
-    font-size: 22px;
-    transition: var(--tran-03);
-}
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
-}
 
-.sidebar .menu{
-    margin-top: 35px;
-}
+
+
 
 
 
@@ -136,75 +130,17 @@ header .image-text .header-text{
     background: var(--primary-color);
 }
 .sidebar .menu-bar{
-    height: calc(100% - 50px);
     display: flex;
     flex-direction: column;
     justify-content:space-between;
 }
 
-.menu-bar .mode{
-    position:relative;
-    border-radius: 6px;
-    background: var(--primary-color-light);
-}
-
-.menu-bar .mode .moon-sun{
-    height: 50px;
-    width: 60px;
-    display: flex;
-    align-items: center;
-}
-.menu-bar .mode i{
-    position: absolute;
-    transition: var(--tran-03);
-}
-
-.menu-bar .mode .toggle-switch{
-    position: absolute;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    min-width: 60px;
-    cursor: pointer;
-    border-radius: 6px;
-    background:var(--primary-color-light);
-    transition: var(--tran-05);
-}
-
-
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color)
-}
-
-.switch::before{
-    content: '';
-    position:absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background: var(--sidebar-color);
-}
-
-body.dark .switch::before{
-    left: 24px;
-}
 
 .home{
-    position: relative;
-    left: 25vh;
-    height: 250px;
-    width: calc(100% - 250px);
     background: var(--body-color);
     transition: var(--tran-05);
+    padding:0;
+    margin: 0;
 }
 
 .home .text{
@@ -212,11 +148,4 @@ body.dark .switch::before{
     font-weight: 500;
     color: var(--text-color);
     padding: 8px 40px;
-}
-
-.sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
-    padding: 0;
-
 }

@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSidenavModule} from '@angular/material/sidenav';
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +23,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     AppRoutingModule,
     HomeModule,
     BrowserAnimationsModule,
-    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
