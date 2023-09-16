@@ -7,7 +7,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-form.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
+
+// Angular Material Imports
+import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +28,13 @@ import {MatCardModule} from '@angular/material/card';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    FlexLayoutModule
 
 
   ]
