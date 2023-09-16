@@ -1,37 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material/sidenav";
-import { BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {  BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import { MatToolbar } from '@angular/material/toolbar';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  shouldHideToolbar: boolean = false;
+export class HomeComponent implements OnInit {
+  shouldHideToolbar: boolean = true;
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-
+  toolbar!: MatToolbar
+  public isMobileLayout = false;
 
   constructor(
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private cdr: ChangeDetectorRef,
+
+
     ) {}
+    ngOnInit() {
+      window.onresize = () => this.isMobileLayout = window.innerWidth <= 912;
+    }
   ngAfterViewInit() {
-    this.breakpointObserver.observe(["(max-width: 800px)"]).subscribe((res) => {
+    this.breakpointObserver.observe(["(max-width: 912px)"]).subscribe((res) => {
       if (res.matches) {
         this.sidenav.mode = "over";
         this.sidenav.close();
-        this.shouldHideToolbar = res.matches;
-
       } else {
         this.sidenav.mode = "side";
         this.sidenav.open();
-        ;
       }
     });
-    this.breakpointObserver.observe([Breakpoints.Handset, '(min-width: 800px && max-width: 375px)']).subscribe(result => {
+    this.cdr.detectChanges();
 
-    });
   }
   }
+
