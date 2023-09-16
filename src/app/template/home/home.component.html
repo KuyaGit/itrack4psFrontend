@@ -1,64 +1,75 @@
 
-  <nav class="sidebar" [class.close]="isSidebarClosed">
-    <header>
-      <div class="image-text">
-        <span class="image">
-          <img src="assets/navbar/logo.png" alt="logo">
-        </span>
-        <div class="text header-text">
-          <span class="name">Itrack4ps</span>
-          <span class="title">Monitoring System</span>
+
+<mat-toolbar  fxHide.gt-md>
+  <!-- <button mat-icon-button>
+  <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+  <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+</button> -->
+  Itrack4ps Monitoring System
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav class="sidebar" fxHide.lt-md>
+    <!-- <nav class="sidebar"> -->
+      <header>
+        <div class="image-text">
+          <span class="image">
+            <img src="assets/navbar/logo.png" alt="logo">
+          </span>
+          <div class="text header-text">
+            <span class="name">Itrack4ps</span>
+            <span class="title">Monitoring System</span>
+          </div>
+        </div>
+      </header>
+      <div class="menu-bar">
+        <div class="menu">
+          <ul class="menu-links">
+            <li class="nav-link">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/dashboard">
+                <i class='bx bx-home-alt icon'></i>
+                <span class="text nav-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/beneficiary">
+                <i class='bx bx-money-withdraw icon'></i>
+                <span class="text nav-text">Beneficiaries</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/profilesetting">
+                <i class='bx bx-cog icon'></i>
+                <span class="text nav-text">Profile Settings</span>
+              </a>
+            </li>
+            <li class="nav-link">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/usermanagement">
+                <i class='bx bx-user-circle icon'></i>
+                <span class="text nav-text">User Management</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="bottom content">
+          <li>
+            <a href="mailto:itrack4ps@gmail.com">
+              <i class='bx bx-support icon'></i>
+              <span class="text nav-text">Help & Support</span>
+          </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-log-out icon'></i>
+              <span class="text nav-text">Logout</span>
+            </a>
+          </li>
         </div>
       </div>
-      <i class='bx bx-chevron-right toggle' (click)="toggleSidebar()"></i>
-    </header>
-    <div class="menu-bar">
-      <div class="menu">
-        <ul class="menu-links">
-          <li class="nav-link">
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/dashboard">
-              <i class='bx bx-home-alt icon'></i>
-              <span class="text nav-text">Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-link">
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/beneficiary">
-              <i class='bx bx-money-withdraw icon'></i>
-              <span class="text nav-text">Beneficiaries</span>
-            </a>
-          </li>
-          <li class="nav-link">
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/profilesetting">
-              <i class='bx bx-cog icon'></i>
-              <span class="text nav-text">Profile Settings</span>
-            </a>
-          </li>
-          <li class="nav-link">
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/usermanagement">
-              <i class='bx bx-user-circle icon'></i>
-              <span class="text nav-text">User Management</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="bottom content">
-        <li>
-          <a href="mailto:itrack4ps@gmail.com">
-            <i class='bx bx-support icon'></i>
-            <span class="text nav-text">Help & Support</span>
-        </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class='bx bx-log-out icon'></i>
-            <span class="text nav-text">Logout</span>
-          </a>
-        </li>
-
-      </div>
+    <!-- </nav> -->
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
     </div>
-  </nav>
-  <div class="home">
-    <router-outlet></router-outlet>
-  </div>
-
+  </mat-sidenav-content>
+</mat-sidenav-container>
