@@ -3,7 +3,7 @@
 
 
 mat-toolbar {
-  background: #004a9f;
+  background: var(--sidebar-color);;
   color: white;
 }
 
@@ -19,6 +19,13 @@ mat-sidenav-container {
   height: 100vh;
 }
 
+.menu-button {
+  align-items: center;
+  font-size: 1rem;
+  mat-icon {
+    margin-right: 8px;
+  }
+}
 .sidebar{
     top: 0;
     left: 0;
@@ -99,7 +106,7 @@ header .image-text .header-text{
 }
 
 .header-text .title{
-   margin-top: -2px;
+    margin-top: -2px;
 }
 
 .sidebar header .toggle{
@@ -118,9 +125,7 @@ header .image-text .header-text{
     font-size: 22px;
     transition: var(--tran-03);
 }
-.sidebar.close header .toggle{
-    transform: translateY(-50%);
-}
+
 
 .sidebar .menu{
     margin-top: 35px;
@@ -188,25 +193,8 @@ header .image-text .header-text{
 }
 
 
-.toggle-switch .switch{
-    position: relative;
-    height: 22px;
-    width: 44px;
-    border-radius: 25px;
-    background: var(--toggle-color)
-}
 
-.switch::before{
-    content: '';
-    position:absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 50%;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    background: var(--sidebar-color);
-}
+
 
 body.dark .switch::before{
     left: 24px;
@@ -228,9 +216,17 @@ body.dark .switch::before{
     padding: 8px 40px;
 }
 
-.sidebar.close ~ .home{
-    left: 88px;
-    width: calc(100% - 88px);
-    padding: 0;
+.bottom-content{
 
+
+  border-radius: 6px;
+  transition: var(--tran-04);
+  background: #fff;
 }
+
+.bottom-content li .icon,
+.bottom-content li .text{
+    color: black;
+    transition: var(--tran-02);
+}
+

@@ -1,15 +1,16 @@
 
 
-<mat-toolbar  fxHide.gt-md>
-  <!-- <button mat-icon-button>
-  <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-  <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-</button> -->
+<mat-toolbar  *ngIf="isMobileLayout">
+  <button mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
   Itrack4ps Monitoring System
 </mat-toolbar>
 <mat-sidenav-container>
-  <mat-sidenav class="sidebar" fxHide.lt-md>
-    <!-- <nav class="sidebar"> -->
+  <mat-sidenav class="sidebar" #sidenav="matSidenav">
       <header>
         <div class="image-text">
           <span class="image">
@@ -51,12 +52,14 @@
           </ul>
         </div>
         <div class="bottom content">
-          <li>
-            <a href="mailto:itrack4ps@gmail.com">
-              <i class='bx bx-support icon'></i>
-              <span class="text nav-text">Help & Support</span>
-          </a>
-          </li>
+          <div class="bottom-content">
+            <li>
+              <a href="mailto:itrack4ps@gmail.com" class="bottom-content">
+                <i class='bx bx-support icon'></i>
+                <span class="text nav-text">Help & Support</span>
+            </a>
+            </li>
+          </div>
           <li>
             <a href="#">
               <i class='bx bx-log-out icon'></i>
