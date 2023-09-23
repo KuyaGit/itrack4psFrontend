@@ -7,6 +7,7 @@ import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-f
 import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
 import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
+import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,11 @@ const routes: Routes = [
     {
       path: 'usermanagement',
       component: UsermanagementComponent
-    }
+    },
+    {
+      path: 'householdbeneficiary',
+      component: HouseholdbeneficiaryComponent
+    },
     ]
   },
 
