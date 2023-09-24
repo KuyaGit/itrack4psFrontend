@@ -1,15 +1,31 @@
 
+<ng-template #template>
+  <h2 mat-dialog-title>Create Account</h2>
+<mat-dialog-content class="mat-typography">
+  <h3>Create Account</h3>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>
+</ng-template>>
 <body>
   <div class="header">
     <header>User Management</header>
-    <button mat-fab extended color="primary" class="add-button">
-      <mat-icon>add</mat-icon>
-      Add User
-    </button>
+      <button mat-fab extended color="primary" class="add-button" (click)="openDialog(template)">
+          <mat-icon>add</mat-icon>
+          Add User
+      </button>
   </div>
   <div class="container">
-    <div class="h-beneficiary">
+      <div class="h-beneficiary">
       <!-- Display Here the Child Beneficiaries -->
-    </div>
+      </div>
   </div>
 </body>
+
+
+
+
+
