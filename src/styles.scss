@@ -1,10 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 *{
   font-family: 'Poppins',sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
 :root{
     --body-color: #E2E3EA;
     --sidebar-color: #007E94;
@@ -20,3 +24,4 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

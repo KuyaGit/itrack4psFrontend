@@ -32,6 +32,12 @@
               </a>
             </li>
             <li class="nav-link">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/householdbeneficiary">
+                <i class='bx bx-male-female icon'></i>
+                <span class="text nav-text">Household <br> Beneficiaries</span>
+              </a>
+            </li>
+            <li class="nav-link">
               <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/beneficiary">
                 <i class='bx bx-money-withdraw icon'></i>
                 <span class="text nav-text">Beneficiaries</span>
@@ -61,7 +67,8 @@
             </li>
           </div>
           <li>
-            <a href="#">
+            <a href="#" style=" border: 2px solid #fff;
+            border-radius: 5px;;">
               <i class='bx bx-log-out icon'></i>
               <span class="text nav-text">Logout</span>
             </a>
