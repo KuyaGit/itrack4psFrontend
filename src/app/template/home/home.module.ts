@@ -17,6 +17,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -24,6 +25,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DashboardComponent,
     HouseholdbeneficiaryComponent,
     UsermanagementComponent,
+
   ],
   imports: [
     CommonModule,

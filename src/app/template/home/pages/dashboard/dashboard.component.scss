@@ -1,6 +1,22 @@
 * {
   padding: 1%;
 }
-.dashboard{
-  padding: 1%;
+body{
+  background: var(--body-color);
+  height: 100vh;
 }
+.header{
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+.container{
+  height: 85%;
+  border-radius: 6px;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+

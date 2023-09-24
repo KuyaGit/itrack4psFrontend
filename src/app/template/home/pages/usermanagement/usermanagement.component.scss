@@ -1,3 +1,36 @@
 * {
   padding: 1%;
 }
+
+body{
+  background: var(--body-color);
+  height: 100vh;
+}
+.header{
+  font-size: 30px;
+  font-weight: 600;
+  color: #333;
+  mat-icon{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-right: 0;
+  }
+}
+.add-button{
+  margin-left: 1vw;
+  margin-right: 1vw;
+  font-size: 15px;
+  line-height: 18px;
+  height: 30px;
+
+}
+.container{
+  height: 70%;
+  border-radius: 6px;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
