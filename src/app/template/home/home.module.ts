@@ -16,6 +16,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -36,8 +37,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatDialogModule
 
   ]
 })
