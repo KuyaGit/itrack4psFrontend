@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ProfileSettingComponent } from './profile-setting.component';
+import { ProfileSettingComponent } from './profile-setting.component'; // Correct the import path
 
 describe('ProfileSettingComponent', () => {
   let component: ProfileSettingComponent;
@@ -8,7 +7,7 @@ describe('ProfileSettingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ProfileSettingComponent]
+      declarations: [ProfileSettingComponent],
     });
     fixture = TestBed.createComponent(ProfileSettingComponent);
     component = fixture.componentInstance;
