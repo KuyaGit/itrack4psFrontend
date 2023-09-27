@@ -1,39 +1,87 @@
-@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css");
-@import url("https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js");
-@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js");
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
 
-body{
-    margin-top:20px;
-    background:#F0F8FF;
-    }
-    .card {
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
-    }
-    .card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid #e5e9f2;
-    border-radius: .2rem;
-    }
-    .card-header:first-child {
-    border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
-    }
-    .card-header {
-    border-bottom-width: 1px;
-    }
-    .card-header {
-    padding: .75rem 1.25rem;
-    margin-bottom: 0;
-    color: inherit;
-    background-color: #fff;
-    border-bottom: 1px solid #e5e9f2;
-    }
+.mat-h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  
+}
+.mat-card {
+  margin-top: 30px;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007E94;
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.card-header h5 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.mat-card-content {
+  padding: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+
+.full-width {
+  width: 100%;
+}
+
+.large-button {
+  font-size: 16px;
+  padding: 12px 24px;
+}
+
+button[type="submit"] {
+  background-color: #007E94;
+  color: #fff;
+  margin-top: 20px;
+  padding: 16px 80px;
+  border: none; 
+}
+
+button[type="submit"]:hover {
+  background-color: #7A5CFA; 
+}
+
+/* Success Message Styles */
+.mat-alert.mat-success {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.mat-icon {
+  color: gray;
+  border: none;
+  outline: none;
+}
+
+.button{
+  border: none;
+  padding-right: 60%;
+}
+

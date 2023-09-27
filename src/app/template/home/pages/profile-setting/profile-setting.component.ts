@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-setting',
@@ -6,8 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-setting.component.scss']
 })
 export class ProfileSettingComponent {
+  email = new FormControl('', [Validators.required, Validators.email]);
+  hide = true;
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+
   name: string = '';
-  email: string = '';
   password: string = '';
   confirmPassword: string = '';
   secActive: boolean = false;
@@ -27,6 +38,6 @@ export class ProfileSettingComponent {
   onInfoSubmit() {
     this.infoSuccess = true;
     this.name = '';
-    this.email = '';
+    this.email = new FormControl('', [Validators.required, Validators.email]);
   }
 }
