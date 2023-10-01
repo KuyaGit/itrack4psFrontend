@@ -6,8 +6,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field'; 
-import { MatIconModule } from '@angular/material/icon'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HomeModule } from './template/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,13 +15,18 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileSettingComponent } from './template/home/pages/profile-setting/profile-setting.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileSettingComponent
+    ProfileSettingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,9 +38,12 @@ import { ProfileSettingComponent } from './template/home/pages/profile-setting/p
     MatMenuModule,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule, 
-    MatIconModule, 
-   
+    MatFormFieldModule,
+    MatIconModule,
+    FontAwesomeModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { HomeComponent } from '../../home.component';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, } from '@angular/material/dialog';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -10,14 +10,39 @@ import { HomeComponent } from '../../home.component';
   templateUrl: './usermanagement.component.html',
   styleUrls: ['./usermanagement.component.scss']
 })
-export class UsermanagementComponent {
-  constructor(public dialog: MatDialog) {}
 
+export class UsermanagementComponent implements OnInit{
+  hide = true;
+  createaccountForm: FormGroup;
+  constructor(
+    public dialog: MatDialog,
+    public formbuilder: FormBuilder
+    )
+    {
+      this.createaccountForm = this.formbuilder.group({
+        pk:[''],
+        username: ['', [Validators.required]],
+        fName : ['', [Validators.required]],
+        accountType: ['', [Validators.required]],
+      });
+  }
+
+  ngOnInit() {
+
+  }
   openDialog(templateRef: any) {
-    const dialogRef = this.dialog.open(templateRef);
+    let dialogRef = this.dialog.open(templateRef,{
+      width: '80%',
+      // height: '55%',
+    });
+
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  get form(): { [key: string]: AbstractControl } {
+    return this.createaccountForm.controls;
   }
 }
