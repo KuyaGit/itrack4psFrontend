@@ -98,6 +98,31 @@ button[type="submit"]:hover {
   margin-top: -150px;
 }
 
+.profile-photo {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #007E94;
+  margin-right: 30px;
+}
+
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.profile-name {
+  margin-top: 10px;
+  font-weight: bold;
+  color:gray;
+  margin-left: -20px;
+
+}
 body{
   background: var(--body-color);
   height: 100vh;

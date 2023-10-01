@@ -37,10 +37,10 @@
               <mat-radio-group aria-label="Select an option" formControlName="accountType">
                 <mat-radio-button class="example-radio-button" value="1">Admin</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="2">4ps Staff</mat-radio-button>
-                <mat-radio-button class="example-radio-button" value="type_3">School Registrar</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="3">School Registrar</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="4">4ps Beneficiary</mat-radio-button>
               </mat-radio-group>
-              <mat-form-field *ngIf="createaccountForm.controls.accountType && createaccountForm.controls.accountType.value == 'type_3'" appearance="outline" class="width-100">
+              <mat-form-field *ngIf="createaccountForm.controls.accountType && createaccountForm.controls.accountType.value == '3'" appearance="outline" class="width-100">
                   <mat-label>School Name</mat-label>
                   <input matInput placeholder="School">
               </mat-form-field>
