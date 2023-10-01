@@ -7,17 +7,63 @@
         <div class="mat-tab-group">
           <!-- Account Tab -->
           <mat-tab-group dynamicHeight="true" [selectedIndex]="0">
-            <mat-tab label="Password and Security">
-              <div class="mat-card">
+            <!-- Private Info Tab -->
+            <mat-tab label="User Information">
+              <div class="mat-card mt-3">
                 <div class="card-header">
-                  <div class="card-actions float-right">
-                    <div class="dropdown show">
-                      <a href="#" mat-button [matMenuTriggerFor]="menu"></a>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item></button>
-                      </mat-menu>
-                    </div>
-                  </div>
+                  <h5 class="mat-card-title mb-0">Private Information</h5>
+                </div>
+                <div class="mat-card-content">
+                  <!-- User Profile Section -->
+<div class="user-profile-section">
+  <!-- Profile Photo Container (on the left) -->
+  <div class="profile-container">
+    <!-- Profile Photo Container -->
+    <div class="profile-photo">
+      <img [src]="userPhoto || defaultProfilePhotoUrl" alt="Photo" (click)="fileInput.click()">
+      <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
+      <button mat-icon-button class="button" (click)="fileInput.click()">
+        <mat-icon>photo_camera</mat-icon>
+      </button>
+    </div>
+    
+    <!-- Profile Name -->
+    <div class="profile-name">
+      <p>{{ userFullName }}</p>
+    </div>
+  </div>
+  
+  <!-- Information update form -->
+  <form (ngSubmit)="onInfoSubmit()">
+    <!-- Email -->
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" placeholder="Email" id="inputEmail4" required>
+    </mat-form-field>
+    <!-- Address -->
+    <mat-form-field class="full-width">
+      <mat-label>Address</mat-label>
+      <input matInput type="text" placeholder="Address" id="inputAddress" required>
+    </mat-form-field>
+    <!-- Zip -->
+    <mat-form-field class="full-width">
+      <mat-label>Zip</mat-label>
+      <input matInput type="text" placeholder="Zip" id="inputZip" required>
+    </mat-form-field>
+    <button mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
+  </form>
+  <!-- Success message for information update -->
+  <div *ngIf="infoSuccess" class="mat-alert mat-success">
+    Information Submitted Successfully!!!
+  </div>
+</div>
+
+              </div>
+          
+            <!-- Security Tab -->
+            <mat-tab label="Security">
+              <div class="mat-card mt-3">
+                <div class="card-header">
                   <h5 class="mat-card-title mb-0">Password and Security</h5>
                 </div>
                 <div class="mat-card-content">
@@ -31,7 +77,6 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
-                    
                     <!-- New Password -->
                     <mat-form-field class="full-width">
                       <mat-label>New password</mat-label>
@@ -40,7 +85,6 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
-                    
                     <!-- Verify Password -->
                     <mat-form-field class="full-width">
                       <mat-label>Verify password</mat-label>
@@ -49,7 +93,6 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                     </mat-form-field>
-                    
                     <button mat-raised-button color="primary" type="submit" class="large-button">Update</button>
                   </form>
                   <!-- Success message for password update -->
@@ -59,51 +102,11 @@
                 </div>
               </div>
             </mat-tab>
-            <!-- Private Info -->
-            <mat-tab label="Private Information">
-              <div class="mat-card mt-3">
-                <div class="card-header">
-                  <h5 class="mat-card-title mb-0">Private Information</h5>
-                </div>
-                <div class="mat-card-content">
-                  <!-- Information update form -->
-                  <form (ngSubmit)="onInfoSubmit()">
-                    <!-- Full Name -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Full Name</mat-label>
-                      <input matInput type="text" placeholder="Full Name" id="inputFullName" [readonly]="true" disabled>
-                    </mat-form-field>
-
-                    <!-- Email -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Email</mat-label>
-                      <input matInput type="email" placeholder="Email" id="inputEmail4" required>
-                    </mat-form-field>
-
-                    <!-- Address -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Address</mat-label>
-                      <input matInput type="text" placeholder="Address" id="inputAddress" required>
-                    </mat-form-field>
-
-                    <!-- Zip -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Zip</mat-label>
-                      <input matInput type="text" placeholder="Zip" id="inputZip" required>
-                    </mat-form-field>
-
-                    <button mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
-                  </form>
-                  <!-- Success message for information update -->
-                  <div *ngIf="infoSuccess" class="mat-alert mat-success">
-                    Information Submitted Successfully!!!
-                  </div>
-                </div>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
-        </div>
       </div>
+ </mat-tab>
+          </mat-tab-group>
+          </div>
+          </div>
     </div>
-  </div>
-</body>
+    </div>
+    </body>
