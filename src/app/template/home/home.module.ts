@@ -17,9 +17,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatLabel } from '@angular/material/form-field';
-
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { MatMenuModule} from '@angular/material/menu';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -32,6 +38,8 @@ import { MatLabel } from '@angular/material/form-field';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule,
@@ -39,8 +47,15 @@ import { MatLabel } from '@angular/material/form-field';
     MatIconModule,
     MatDividerModule,
     FlexLayoutModule,
-    MatDialogModule
-   
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatGridListModule,
+    MatMenuModule,
+
 
   ]
 })

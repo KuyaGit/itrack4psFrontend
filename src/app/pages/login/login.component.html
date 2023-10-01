@@ -1,19 +1,20 @@
 <div class="body">
-  <div class="container">
-    <div class="signin-signup">
-        <form action="" class="sign-in-form">
-            <h2 class="title">LOGIN</h2>
-            <div class="input-field">
-                <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Email">
-            </div>
-            <div class="input-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password">
-            </div>
-            <input type="submit" value="Login" class="btn" routerLink="/home/beneficiary">
-            <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
-        </form>
+    <div class="container">
+        <div class="signin-signup">
+            <form action="" class="sign-in-form">
+                <h2 class="title">LOGIN</h2>
+                <div class="input-field">
+                    <fa-icon [icon]="faMail"></fa-icon>
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" placeholder="Email">
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <input type="submit" value="Login" class="btn" routerLink="/home/beneficiary">
+                <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
+            </form>
         <form action="" class="sign-up-form">
             <h2 class="title">SIGN UP</h2>
             <div class="input-field">
@@ -21,7 +22,7 @@
                 <input type="text" placeholder="Full Name">
             </div>
             <div class="input-field">
-                <i class="fas fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
                 <input type="text" placeholder="Email">
             </div>
             <div class="input-field">
@@ -33,28 +34,27 @@
                 <input type="text" placeholder="Household ID">
             </div>
             <input type="submit" value="Sign up" class="btn">
-
             <p class="account-text">Already have an account? <a href="#" id="sign-in-btn2">LOGIN</a></p>
         </form>
     </div>
     <div class="panels-container">
-      <div class="panel left-panel">
-          <div class="content">
-              <h3>Welcome and Login Your Account</h3>
-              <p>Your account is what matter, Dont forget your password bestie! stay well</p>
-              <button class="btn" id="sign-in-btn" >LOGIN</button>
-          </div>
-          <img src="assets/login/Itrack4ps.png" alt="" class="image">
-      </div>
-      <div class="panel right-panel">
-          <div class="content">
+        <div class="panel left-panel">
+            <div class="content">
+                <h3>Welcome and Login Your Account</h3>
+                <p>Your account is what matter, Dont forget your password bestie! stay well</p>
+                <button class="btn" id="sign-in-btn" >LOGIN</button>
+            </div>
+            <img src="assets/login/Itrack4ps.png" alt="" class="image">
+    </div>
+    <div class="panel right-panel">
+        <div class="content">
                 <h3>Create an Account</h3>
                 <p>Just a simple step you can create and update your account.</p>
                 <button class="btn" id="sign-up-btn" routerLink="/register">Sign up</button>
-          </div>
-          <img src="assets/login/Itrack4ps.png" alt="" class="image">
-          <img src="assets/login/Itrack4ps.png" alt="Logo" class="logo">
-      </div>
-  </div>
+        </div>
+            <img src="assets/login/Itrack4ps.png" alt="" class="image">
+            <img src="assets/login/Itrack4ps.png" alt="Logo" class="logo">
+        </div>
+    </div>
 </div>
-z
+

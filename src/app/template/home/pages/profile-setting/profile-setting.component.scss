@@ -9,7 +9,7 @@
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  
+
 }
 .mat-card {
   margin-top: 30px;
@@ -57,11 +57,11 @@ button[type="submit"] {
   color: #fff;
   margin-top: 20px;
   padding: 16px 80px;
-  border: none; 
+  border: none;
 }
 
 button[type="submit"]:hover {
-  background-color: #7A5CFA; 
+  background-color: #7A5CFA;
 }
 
 /* Success Message Styles */
@@ -100,11 +100,11 @@ button[type="submit"]:hover {
 
 .profile-photo {
   position: relative;
-  width: 100px; 
-  height: 100px; 
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   border-radius: 50%;
-  border: 3px solid #007E94; 
+  border: 3px solid #007E94;
   margin-right: 30px;
 }
 
@@ -117,8 +117,13 @@ button[type="submit"]:hover {
 }
 
 .profile-name {
-  margin-top: 10px; 
+  margin-top: 10px;
   font-weight: bold;
   color:gray;
   margin-left: -20px;
+
+}
+body{
+  background: var(--body-color);
+  height: 100vh;
 }

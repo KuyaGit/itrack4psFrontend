@@ -9,32 +9,37 @@ import { ProfileSettingComponent } from './pages/profile-setting/profile-setting
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 
+
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
     children: [
-    {
-      path: 'dashboard',
-      component: DashboardComponent
-    },
-    {
-      path: 'beneficiary',
-      component: BeneficiaryFormComponent
-    },
-    {
-      path: 'profilesetting',
-      component: ProfileSettingComponent
-    },
-    {
-      path: 'usermanagement',
-      component: UsermanagementComponent
-    },
-    {
-      path: 'householdbeneficiary',
-      component: HouseholdbeneficiaryComponent
-    },
-
+      {
+        path: 'dashboard',
+        title: 'Dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'beneficiary',
+        title: 'Beneficiary',
+        component: BeneficiaryFormComponent
+      },
+      {
+        path: 'profilesetting',
+        title: 'Profile Setting',
+        component: ProfileSettingComponent
+      },
+      {
+        path: 'usermanagement',
+        title: 'User Management',
+        component: UsermanagementComponent
+      },
+      {
+        path: 'householdbeneficiary',
+        title: 'Household Beneficiary',
+        component: HouseholdbeneficiaryComponent
+      },
     ]
   },
 
