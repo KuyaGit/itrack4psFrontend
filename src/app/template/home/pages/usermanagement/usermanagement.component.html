@@ -1,6 +1,5 @@
 
 <ng-template #template class="create-modal">
-
     <h2 mat-dialog-title>Create Account</h2>
     <mat-dialog-content class="mat-typography">
         <mat-grid-list cols="1">
@@ -10,7 +9,7 @@
                 <mat-label>First Name</mat-label>
                 <input matInput formControlName="fName" required>
                 <mat-error>
-                  <span *ngIf="createaccountForm.controls.fName.touched">This field is mandatory.</span>
+                  <span *ngIf="createaccountForm.controls.fName.touched">This field is required.</span>
                 </mat-error>
               </mat-form-field>
 

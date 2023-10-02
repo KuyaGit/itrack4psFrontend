@@ -20,7 +20,7 @@ export class UsermanagementComponent implements OnInit{
     )
     {
       this.createaccountForm = this.formbuilder.group({
-        pk:[''],
+
         username: ['', [Validators.required]],
         fName : ['', [Validators.required]],
         accountType: ['', [Validators.required]],
