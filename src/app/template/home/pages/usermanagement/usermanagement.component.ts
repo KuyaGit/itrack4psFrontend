@@ -23,7 +23,11 @@ export class UsermanagementComponent implements OnInit{
 
         username: ['', [Validators.required]],
         fName : ['', [Validators.required]],
+        sName : ['', [Validators.required]],
         accountType: ['', [Validators.required]],
+        email : ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        password: ['', [Validators.required,Validators.minLength(6)]],
+        schoolName : ['', [Validators.required]],
       });
   }
 
@@ -33,7 +37,6 @@ export class UsermanagementComponent implements OnInit{
   openDialog(templateRef: any) {
     let dialogRef = this.dialog.open(templateRef,{
       width: '80%',
-      // height: '55%',
     });
 
 

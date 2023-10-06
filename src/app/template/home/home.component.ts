@@ -24,19 +24,24 @@ export class HomeComponent implements OnInit {
 
     ) {}
     ngOnInit() {
-      window.onresize = () => this.isMobileLayout = window.innerWidth <= 912;
+
     }
   ngAfterViewInit() {
     this.breakpointObserver.observe(["(max-width: 912px)"]).subscribe((res) => {
+      console.log(res)
       if (res.matches) {
+        this.isMobileLayout = true;
         this.sidenav.mode = "over";
         this.sidenav.close();
+
       } else {
+        this.isMobileLayout = false;
         this.sidenav.mode = "side";
         this.sidenav.open();
       }
     });
     this.cdr.detectChanges();
     }
+
   }
 
