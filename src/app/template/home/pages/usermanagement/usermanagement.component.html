@@ -8,40 +8,58 @@
               <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
                 <mat-label>First Name</mat-label>
                 <input matInput formControlName="fName" required>
-                <mat-error>
+                <mat-error class="error-message">
                   <span *ngIf="createaccountForm.controls.fName.touched">This field is required.</span>
                 </mat-error>
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="width-50 ml-2">
+              <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
                 <mat-label>Surname</mat-label>
-                <input matInput>
+                <input matInput formControlName="sName">
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls.fName.touched">This field is required.</span>
+                </mat-error>
               </mat-form-field>
               <br>
-              <mat-form-field appearance="outline" class="width-100">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="Ex. juandelacruz@gmail.com">
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Ex. juandelacruz@gmail.com" formControlName="email" >
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls['email'].touched || createaccountForm.controls['email'].errors?.required">This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['email'].errors">Please enter a valid email address.</span>
+                </mat-error>
               </mat-form-field>
               <br>
-              <mat-form-field appearance="outline" class="width-100">
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
                 <mat-label>Enter password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls.password.touched && createaccountForm.controls['password'].errors?.required">
+                    This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['password'].errors?.minlength">This password must 6 or more characters</span>
+                </mat-error>
               </mat-form-field>
               <br>
               <label id="example-radio-group-label">Account Type</label>
-              <br><br>
+              <mat-error class="error-message">
+                <span *ngIf="createaccountForm.controls['accountType'].errors?.required">This field is required.</span>
+              </mat-error>
               <mat-radio-group aria-label="Select an option" formControlName="accountType">
                 <mat-radio-button class="example-radio-button" value="1">Admin</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="2">4ps Staff</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="3">School Registrar</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="4">4ps Beneficiary</mat-radio-button>
               </mat-radio-group>
-              <mat-form-field *ngIf="createaccountForm.controls.accountType && createaccountForm.controls.accountType.value == '3'" appearance="outline" class="width-100">
+
+              <mat-form-field *ngIf="createaccountForm.controls.accountType && createaccountForm.controls.accountType.value == '3'" appearance="outline" class="width-100" hideRequiredMarker="true">
                   <mat-label>School Name</mat-label>
-                  <input matInput placeholder="School">
+                  <input matInput placeholder="School" formControlName="schoolName">
+                  <mat-error class="error-message">
+                    <span *ngIf="createaccountForm.controls['schoolName'].errors?.touched || createaccountForm.controls['schoolName'].errors?.required">This field is required.</span>
+                  </mat-error>
               </mat-form-field>
             </div>
           </form>
@@ -51,8 +69,6 @@
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-fab extended color="primary">Add User</button>
 </div>
-
-
 </ng-template>
 <body>
   <div class="header">
