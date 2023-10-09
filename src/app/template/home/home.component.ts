@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
     }
   ngAfterViewInit() {
     this.breakpointObserver.observe(["(max-width: 912px)"]).subscribe((res) => {
-      console.log(res)
       if (res.matches) {
         this.isMobileLayout = true;
         this.sidenav.mode = "over";
