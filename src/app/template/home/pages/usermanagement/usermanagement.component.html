@@ -25,8 +25,8 @@
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="Ex. juandelacruz@gmail.com" formControlName="email" >
                 <mat-error class="error-message">
-                  <span *ngIf="createaccountForm.controls['email'].touched || createaccountForm.controls['email'].errors?.required">This field is required.</span>
-                  <span *ngIf="createaccountForm.controls['email'].errors">Please enter a valid email address.</span>
+                  <span *ngIf="createaccountForm.controls['email'].errors?.touched || createaccountForm.controls['email'].errors?.required">This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['email'].errors?.pattern">Please enter a valid email address.</span>
                 </mat-error>
               </mat-form-field>
               <br>
@@ -53,7 +53,6 @@
                 <mat-radio-button class="example-radio-button" value="3">School Registrar</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="4">4ps Beneficiary</mat-radio-button>
               </mat-radio-group>
-
               <mat-form-field *ngIf="createaccountForm.controls.accountType && createaccountForm.controls.accountType.value == '3'" appearance="outline" class="width-100" hideRequiredMarker="true">
                   <mat-label>School Name</mat-label>
                   <input matInput placeholder="School" formControlName="schoolName">
@@ -67,7 +66,7 @@
     </mat-dialog-content>
 <div mat-dialog-actions align="end" class="bottom-buttons">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-fab extended color="primary">Add User</button>
+  <button mat-fab extended color="primary" (click)="createAccount()" [disabled]="!createaccountForm.valid" >Add User</button>
 </div>
 </ng-template>
 <body>
