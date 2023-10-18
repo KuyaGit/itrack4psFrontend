@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, } from '@angular/material/dialog';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { AlertServiceService } from 'src/app/services/alert-service.service';
 
 
 
@@ -15,6 +15,7 @@ export class UsermanagementComponent implements OnInit{
   hide = true;
   createaccountForm: FormGroup;
   constructor(
+    private alertService: AlertServiceService,
     public dialog: MatDialog,
     public formbuilder: FormBuilder
     )
@@ -28,7 +29,7 @@ export class UsermanagementComponent implements OnInit{
         schoolName : ['', [Validators.required]],
       });
       this.createaccountForm.controls['accountType'].valueChanges
-                .subscribe(value => this.schoolnamerequired(value));
+        .subscribe(value => this.schoolnamerequired(value));
   }
 
   ngOnInit() {
@@ -44,14 +45,16 @@ export class UsermanagementComponent implements OnInit{
   }
 
   get form(): { [key: string]: AbstractControl } {
+    // This function will return the form controls
     return this.createaccountForm.controls;
   }
 
-  createAccount() { 
+  createAccount() {
     console.log(this.createaccountForm.value);
   }
 
   schoolnamerequired(value: string) {
+    // This function will change the validators for the schoolName field
     const accountType = this.createaccountForm.get('accountType');
     const schoolName = this.createaccountForm.get('schoolName');
     if ( accountType?.value == '3') {

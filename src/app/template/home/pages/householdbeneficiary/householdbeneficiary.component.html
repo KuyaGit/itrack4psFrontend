@@ -1,7 +1,55 @@
+<ng-template #template class="create-modal">
+  <h2 mat-dialog-title>Create Account</h2>
+  <mat-dialog-content class="mat-typography">
+      <mat-grid-list cols="1">
+        <form [formGroup]="childbeneficiaryForm">
+          <div class="example-container">
+            <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="fName" required>
+              <mat-error class="error-message">
+                <span *ngIf="childbeneficiaryForm.controls.fName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+              <mat-label>Surname</mat-label>
+              <input matInput formControlName="sName">
+              <mat-error class="error-message">
+                <span *ngIf="childbeneficiaryForm.controls.fName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <!-- <label id="example-radio-group-label">Account Type</label>
+            <mat-error class="error-message">
+              <span *ngIf="childbeneficiaryForm.controls['accountType'].errors?.required">This field is required.</span>
+            </mat-error>
+            <mat-radio-group aria-label="Select an option" formControlName="accountType">
+              <mat-radio-button class="example-radio-button" value="1">Admin</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="2">4ps Staff</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="3">School Registrar</mat-radio-button>
+              <mat-radio-button class="example-radio-button" value="4">4ps Beneficiary</mat-radio-button>
+            </mat-radio-group> -->
+            <mat-form-field *ngIf="childbeneficiaryForm.controls.accountType && childbeneficiaryForm.controls.accountType.value == '3'" appearance="outline" class="width-100" hideRequiredMarker="true">
+                <mat-label>School Name</mat-label>
+                <input matInput placeholder="School" formControlName="schoolName">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiaryForm.controls['schoolName'].errors?.touched || childbeneficiaryForm.controls['schoolName'].errors?.required">This field is required.</span>
+                </mat-error>
+            </mat-form-field>
+          </div>
+        </form>
+    </mat-grid-list>
+  </mat-dialog-content>
+<div mat-dialog-actions align="end" class="bottom-buttons">
+<button mat-button mat-dialog-close>Cancel</button>
+<button mat-fab extended color="primary" (click)="createchildBeneficiary()" [disabled]="!childbeneficiaryForm.valid" >Add User</button>
+</div>
+</ng-template>
 <body>
   <div class="header">
     <header>Household Beneficiary</header>
-    <button mat-fab extended color="primary" class="add-button">
+    <button mat-fab extended color="primary" class="add-button" (click)="openDialog(template)">
       <mat-icon>add</mat-icon>
       Add Household Beneficiary
     </button>

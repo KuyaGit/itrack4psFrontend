@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
@@ -12,27 +13,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { HomeModule } from './template/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { ProfileSettingComponent } from './template/home/pages/profile-setting/profile-setting.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { RegisterComponent } from './pages/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    ProfileSettingComponent,
-
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomeModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
 
     MatTabsModule,
     MatMenuModule,
