@@ -26,6 +26,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { MatMenuModule} from '@angular/material/menu';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
+import { MatTabsModule } from '@angular/material/tabs';
+
+
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -33,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     HouseholdbeneficiaryComponent,
     UsermanagementComponent,
+    ProfileSettingComponent
 
   ],
   imports: [
@@ -55,6 +61,7 @@ import { FormsModule } from '@angular/forms';
     MatRadioModule,
     MatGridListModule,
     MatMenuModule,
+    MatTabsModule,
 
 
   ]
