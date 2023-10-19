@@ -26,13 +26,13 @@
         <mat-icon>photo_camera</mat-icon>
       </button>
     </div>
-    
+
     <!-- Profile Name -->
     <div class="profile-name">
       <p>{{ userFullName }}</p>
     </div>
   </div>
-  
+
   <!-- Information update form -->
   <form (ngSubmit)="onInfoSubmit()">
     <!-- Email -->
@@ -55,11 +55,10 @@
   <!-- Success message for information update -->
   <div *ngIf="infoSuccess" class="mat-alert mat-success">
     Information Submitted Successfully!!!
+    </div>
   </div>
 </div>
 
-              </div>
-          
             <!-- Security Tab -->
             <mat-tab label="Security">
               <div class="mat-card mt-3">
@@ -102,11 +101,11 @@
                 </div>
               </div>
             </mat-tab>
-      </div>
- </mat-tab>
+              </div>
+            </mat-tab>
           </mat-tab-group>
-          </div>
-          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    </body>
+  </div>
+</body>

@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit{
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       account_type: [3],
+      schoolName: [''],
     });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -74,15 +75,14 @@ export class RegisterComponent implements OnInit{
 
 
   registerSubscription() {
-    console.log(this.registrationForm.value)
     const formData: accountuser  = this.registrationForm.value;
     this._registerService.register(formData).subscribe(
       (response) => {
-        console.log('reg success', response);
+        console.log('reg success', response.message);
         this._alertService.simpleAlert(
           'success',
           'Success',
-          'Registration successful',
+          response.message,
           () => {
             // this.router.navigate(['/']);
           }
@@ -97,20 +97,21 @@ export class RegisterComponent implements OnInit{
             'Error',
             'You already have an account.'
           );
+          this.registrationForm.reset();
         } else if (error.status === 400) {
           this._alertService.simpleAlert(
             'error',
             'Error',
             'Email already exists.'
           );
-        } else if (error.status === 402) {
+          this.registrationForm.reset();
+        } else {
           this._alertService.simpleAlert(
             'error',
             'Error',
             "Household number doesn't exists on our Database you can't register."
           );
-        } else {
-          this._alertService.simpleAlert('error', 'Error', 'Failed to Register');
+          this.registrationForm.reset();
         }
       }
     );

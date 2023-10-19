@@ -11,6 +11,7 @@ export interface accoundetails {
   lName : string;
   address : string;
   schoolName : string;
+  householdNumber : string;
   profilePic : string;
 }
 
