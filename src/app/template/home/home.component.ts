@@ -1,7 +1,7 @@
 import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { ViewChild } from "@angular/core";
 import { MatSidenav } from "@angular/material/sidenav";
-import {  BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import {  BreakpointObserver } from "@angular/cdk/layout";
 import { MatToolbar } from '@angular/material/toolbar';
 
 
