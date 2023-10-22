@@ -16,9 +16,26 @@
                 <div class="mat-card-content">
                   <!-- User Profile Section -->
                   <div class="user-profile-section">
-                    <!-- Profile Photo Container (on the left) -->
-                    <div class="profile-container">
-                      <!-- Profile Photo Container -->
+                    <!-- Information update form -->
+                    <form (ngSubmit)="onInfoSubmit()" [formGroup]="profileForm">
+                      <!-- Email -->
+                      <mat-form-field class="full-width">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="email" placeholder="First Name" id="inputEmail4" formControlName="fname" readonly>
+                      </mat-form-field>
+                      <mat-form-field class="full-width">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="email" placeholder="Last Name" id="inputEmail4" formControlName="lname" readonly>
+                      </mat-form-field>
+                      <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Email" id="inputEmail4" formControlName="email" required>
+                      </mat-form-field>
+                      <!-- Address -->
+                      <mat-form-field class="full-width">
+                        <mat-label>Address</mat-label>
+                        <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="address">
+                      </mat-form-field>
                       <div class="profile-photo">
                         <img [src]="userPhoto || defaultProfilePhotoUrl" alt="Photo" (click)="fileInput.click()">
                         <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
@@ -26,30 +43,6 @@
                           <mat-icon>photo_camera</mat-icon>
                         </button>
                       </div>
-
-                      <!-- Profile Name -->
-                      <div class="profile-name">
-                        <p>{{ userFullName }}</p>
-                      </div>
-                    </div>
-
-                    <!-- Information update form -->
-                    <form (ngSubmit)="onInfoSubmit()">
-                      <!-- Email -->
-                      <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput type="email" placeholder="Email" id="inputEmail4" required>
-                      </mat-form-field>
-                      <!-- Address -->
-                      <mat-form-field class="full-width">
-                        <mat-label>Address</mat-label>
-                        <input matInput type="text" placeholder="Address" id="inputAddress" required>
-                      </mat-form-field>
-                      <!-- Zip -->
-                      <mat-form-field class="full-width">
-                        <mat-label>Zip</mat-label>
-                        <input matInput type="text" placeholder="Zip" id="inputZip" required>
-                      </mat-form-field>
                       <button mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
                     </form>
                     <!-- Success message for information update -->
@@ -67,11 +60,11 @@
                 </div>
                 <div class="mat-card-content">
                   <!-- Password update form -->
-                  <form (ngSubmit)="onPasswordSubmit()">
+                  <form (ngSubmit)="onPasswordSubmit()" [formGroup]='profileForm'>
                     <!-- Current Password -->
                     <mat-form-field class="full-width">
                       <mat-label>Enter your Password</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Current password" id="inputPasswordCurrent" required>
+                      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Current password" id="inputPasswordCurrent"  formControlName="password" required>
                       <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
@@ -79,7 +72,7 @@
                     <!-- New Password -->
                     <mat-form-field class="full-width">
                       <mat-label>New password</mat-label>
-                      <input matInput type="password" placeholder="New password" id="inputPasswordNew" required>
+                      <input matInput type="password" placeholder="New password" id="inputPasswordNew" formControlName="confirmPassword" required>
                       <button mat-icon-button matSuffix class="button"(click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>

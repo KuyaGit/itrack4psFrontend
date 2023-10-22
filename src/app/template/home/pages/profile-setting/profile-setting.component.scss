@@ -1,8 +1,10 @@
+
 .container {
   max-width: 900px;
   margin: auto;
   padding: 20px;
   text-align: center;
+  height: 100vh;
 }
 
 .mat-h3 {
@@ -95,17 +97,17 @@ button[type="submit"]:hover {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: -150px;
+
 }
 
 .profile-photo {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 50%;
+  height: 20%;
   overflow: hidden;
   border-radius: 50%;
-  border: 3px solid #007E94;
-  margin-right: 30px;
+  border: 50% solid #007E94;
+  margin-left: 20%;
 }
 
 
