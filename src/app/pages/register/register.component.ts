@@ -4,7 +4,9 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { accountuser } from 'src/app/services/data';
 import { RegisterService } from 'src/app/services/register.service';
 import { Router } from '@angular/router';
-
+import { LoginService } from 'src/app/services/login.service';
+import { Subscription } from 'rxjs';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +16,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit{
   registrationForm : FormGroup;
   loginForm : FormGroup;
+  loginSubscription: Subscription = new Subscription();
   sign_in_btn!: HTMLElement;
   sign_up_btn!: HTMLElement;
   container!: HTMLElement;
@@ -25,6 +28,8 @@ export class RegisterComponent implements OnInit{
     private router : Router,
     private _alertService: AlertServiceService,
     private _registerService: RegisterService,
+    private _loginService: LoginService,
+    private _sessionService: SessionService
   ) {
     this.registrationForm = this.formBuilder.group({
       fName : ['', Validators.required],
@@ -72,6 +77,56 @@ export class RegisterComponent implements OnInit{
     this.container.classList.add("sign-up-mode");
   }
 
+  login() {
+
+    this.loginSubscription.add(
+      this._loginService
+        .login(
+          this.loginForm.value.email,
+          this.loginForm.value.password
+        )
+        .subscribe(
+          (result) => {
+            if (result['status'] == 200) {
+              if (result['results']) {
+                this._sessionService.setToken(
+                  JSON.stringify({
+                    accountuser_id: result['results']['accountuser_id'],
+                    account_type: result['results']['account_type'],
+                    authorizationToken: result['results']['authorizationToken'],
+                  })
+                );
+                this._alertService.simpleAlert(
+                  'success',
+                  'Success',
+                  'Login Successful'
+                );
+                this.router.navigate(['/home/profilesetting']);
+              } else {
+                this._alertService.simpleAlert(
+                  'error',
+                  'Invalid Account',
+                  'Invalid Account'
+                );
+              }
+            }
+          },
+          (error) => {
+            console.log(error);
+            this._alertService.simpleAlert(
+              'error',
+              'Error',
+              'Invalid Credentials'
+            );
+          }
+        )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.loginSubscription.unsubscribe();
+    this.loginForm.reset();
+  }
 
 
   registerSubscription() {

@@ -28,3 +28,9 @@ export interface child_beneficiary{
   other_status: string;
   profile_piclink: string;
 }
+
+
+export interface loginform {
+  email: string;
+  password: string;
+}

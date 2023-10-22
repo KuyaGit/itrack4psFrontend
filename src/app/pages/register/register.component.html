@@ -2,17 +2,17 @@
 <div class="body">
     <div class="container">
         <div class="signin-signup">
-            <form action="" class="sign-in-form">
+            <form action="" class="sign-in-form" [formGroup]="loginForm">
                 <h2 class="title">LOGIN</h2>
                 <div class="input-field">
                     <i class='bx bxs-envelope' style="font-size: 2em;"></i>
-                    <input type="text" placeholder="Email">
+                    <input type="text" placeholder="Email" formControlName="email">
                 </div>
                 <div class="input-field">
                     <i class='bx bxs-lock-alt' style="font-size: 2em;"></i>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" formControlName="password">
                 </div>
-                <input type="submit" value="Login" class="btn" routerLink="/home/beneficiary">
+                <input type="submit" value="Login" class="btn" (click)="login()">
                 <p class="account-text">Don't have an account? <a href="#" id="sign-up-btn2">Sign up</a></p>
             </form>
         <form action="" class="sign-up-form" [formGroup]="registrationForm">

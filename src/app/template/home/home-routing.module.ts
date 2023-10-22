@@ -8,11 +8,12 @@ import { BeneficiaryFormComponent } from './pages/beneficiary-form/beneficiary-f
 import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
-
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
+    canActivate: [AuthGuard],
     component: HomeComponent,
     children: [
       {

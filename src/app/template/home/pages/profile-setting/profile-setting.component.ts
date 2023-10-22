@@ -9,8 +9,8 @@ import { FormControl, Validators } from '@angular/forms';
 export class ProfileSettingComponent {
   email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
-  defaultProfilePhotoUrl = '/assets/default-profile-photo.png';
-  
+  defaultProfilePhotoUrl = 'assets/default-profile-photo.png';
+
   getErrorMessage() {
     if (this.email.hasError('required')) {
       return 'You must enter a value';
@@ -50,9 +50,9 @@ export class ProfileSettingComponent {
       reader.readAsDataURL(file);
     }
   }
-  userPhoto: string | null = null;
-  userFullName = 'MONALENNE JOY CELIS '; 
-  
+  userPhoto: string = 'assets/defaut-profile-photo.jpg';
+  userFullName = 'MONALENNE JOY CELIS ';
+
   uploadProfilePhoto() {
   }
 }
