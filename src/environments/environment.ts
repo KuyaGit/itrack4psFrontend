@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  server_link : 'http://localhost:3994'
+  production: true,
+  server_link : 'https://itrack4ps.solutions'
 };

@@ -10,7 +10,7 @@ import { accountuser } from './data';
   providedIn: 'root'
 })
 export class RegisterService {
-  private url = `${environment.server_link}/api/register`;
+  private url = `${environment.server_link}/api/beneficiary/register`;
 
   constructor(
     private http: HttpClient
