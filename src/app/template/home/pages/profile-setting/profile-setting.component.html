@@ -36,21 +36,20 @@
                         <mat-label>Address</mat-label>
                         <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="address">
                       </mat-form-field>
-                      <div class="profile-photo">
-                        <img [src]="userPhoto || defaultProfilePhotoUrl" alt="Photo" (click)="fileInput.click()">
-                        <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
-                        <button mat-icon-button class="button" (click)="fileInput.click()">
-                          <mat-icon>photo_camera</mat-icon>
-                        </button>
+                      <div class="photo-container">
+                        <div class="profile-photo">
+                          <img [src]="userPhoto || defaultProfilePhotoUrl" alt="Photo" (click)="fileInput.click()">
+                          <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
+                          <button mat-icon-button class="button" (click)="fileInput.click()">
+                            <mat-icon>photo_camera</mat-icon>
+                          </button>
+                        </div>
                       </div>
                       <button mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
                     </form>
-                    <!-- Success message for information update -->
-                    <div *ngIf="infoSuccess" class="mat-alert mat-success">
-                      Information Submitted Successfully!!!
-                      </div>
                     </div>
                   </div>
+                  
 
             <!-- Security Tab -->
             <mat-tab label="Security">

@@ -28,6 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -62,6 +64,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatGridListModule,
     MatMenuModule,
     MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule
 
 
   ]
