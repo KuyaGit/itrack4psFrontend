@@ -77,7 +77,6 @@ export class ProfileSettingComponent implements OnInit{
     }
   }
   userPhoto: string = 'assets/defaut-profile-photo.jpg';
-  userFullName = 'MONALENNE JOY CELIS ';
   accountuser_id : number = 0;
 
 

@@ -16,7 +16,8 @@ export class DataService {
 
 
   public get_all_user(): Observable<any> {
-    return this.http.get<any>(this.url.concat('/api/get_all_user'));
+    return this.http.get<any>(this.url.concat('/api/admin/allusers'));
+    
   }
 
   public get_user_profile(accountuser_id: number): Observable<any> {

@@ -5,6 +5,7 @@
 body{
   background: var(--body-color);
   height: 100vh;
+  padding:  3%;
 }
 .header{
   font-size: 30px;
@@ -26,9 +27,9 @@ body{
 
 }
 .container{
-  height: 70%;
+  padding-top: 1%;
+  height: 94vh;
   border-radius: 6px;
-  padding: 30px;
   margin: 0 15px;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);

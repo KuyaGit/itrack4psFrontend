@@ -34,3 +34,14 @@ export interface loginform {
   email: string;
   password: string;
 }
+
+export interface getalluser {
+  accoundetails_id : number;
+  fname : string;
+  lname : string;
+  address : string;
+  schoolName : string;
+  householdNumber : string;
+  profile_piclink : string;
+  account_type : number;
+}
