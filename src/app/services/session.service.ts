@@ -8,14 +8,9 @@ import { Subject } from 'rxjs';
 })
 export class SessionService {
 	redirectUrl: string = "";
-	isNavVisible: boolean = false;
-	isUserLoggedIn: boolean = false;
 	isAlertOnceOnTokenExpire: boolean = false;
 	acccountuser_id: number = 0;
 	account_type: number = 0;
-
-	navbarVisibilityChange: Subject<boolean> = new Subject<boolean>();
-	isUserLoggedInStatus: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private router: Router
@@ -23,14 +18,6 @@ export class SessionService {
 
 	setToken(token: any) {
 		localStorage.setItem('user_loginSession', token);
-	}
-
-	isUserLogginToggle(val: boolean) {
-		this.isUserLoggedInStatus.next(val);
-	}
-
-	toggleNavbarVisibility(val: boolean) {
-		this.navbarVisibilityChange.next(val);
 	}
 
 	getToken() {
@@ -52,8 +39,7 @@ export class SessionService {
 	}
 
 	logout() {
-		this.isUserLogginToggle(false);
-		this.toggleNavbarVisibility(false);
+
 		localStorage.removeItem('user_loginSession');
 		this.router.navigate(['']);
 		window.location.reload();

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { accoundetails } from './data';
+import { accountdetails } from './data';
 import { Observable, catchError, throwError } from 'rxjs';
 
 
@@ -21,10 +21,6 @@ export class AddUserService {
     return this.http.post(this.url + '/api/admin/add_user', accountdetails)
     .pipe(catchError(this.handleError));;
     }
-
-
-
-
     private handleError(err: HttpErrorResponse) {
       let errorMessage = '';
       if (err.error instanceof ErrorEvent) {

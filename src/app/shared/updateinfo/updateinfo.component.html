@@ -1,0 +1,53 @@
+<body>
+  <div class="user-information" *ngIf="account_type === 1 || account_type === 2">
+    <div class="title">
+      <header>{{data.title}}</header>
+    </div>
+    <div class="first-info">
+      <mat-grid-list cols="2" rowHeight="2:1" >
+        <mat-grid-tile class="user-image">
+          <div class="image">
+            <img class="avatar huge" [src]="userInfo?.profile_piclink">
+          </div>
+        </mat-grid-tile>
+      <mat-grid-tile class="name">
+        <div class="name">
+          <form [formGroup]="profileForm">
+            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" placeholder="First Name" id="inputEmail4" formControlName="fname" readonly>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" placeholder="Last Name" id="inputEmail4" formControlName="lname" readonly>
+            </mat-form-field>
+          </form>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+    <div class="second-info">
+      <form [formGroup]="profileForm">
+        <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" placeholder="Email" id="inputEmail4" formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+          <mat-label>Address</mat-label>
+          <input matInput type="text" placeholder="Address" id="inputEmail4" formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+          <mat-label>Mobile Number</mat-label>
+          <input matInput type="text" placeholder="Mobile Number" id="inputEmail4" formControlName="mobile_number">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+          <mat-label>Account Type</mat-label>
+          <input matInput type="text" placeholder="Account Type" id="inputEmail4" formControlName="account_type" [value]="userInfo?.accountTypeName" readonly>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+  <button mat-raised-button color="warn" (click)="closepopup()">Close</button>
+  <button mat-raised-button color="primary" (click)="closepopup()">Update</button>
+</body>
+

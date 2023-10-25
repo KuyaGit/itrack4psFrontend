@@ -17,7 +17,7 @@ export class DataService {
 
   public get_all_user(): Observable<any> {
     return this.http.get<any>(this.url.concat('/api/admin/allusers'));
-    
+
   }
 
   public get_user_profile(accountuser_id: number): Observable<any> {
@@ -27,6 +27,32 @@ export class DataService {
       })
       .pipe(catchError(this.handleError));
   }
+
+  public deleteuserprofile(accountuser_id: string): Observable<any> {
+    return this.http.post<any>(this.url.concat('/api/admin/deleteuserprofile'), {
+      accountuser_id: accountuser_id,
+    })
+    .pipe(catchError(this.handleError));
+  }
+
+  public update_profile(ProfileData: any): Observable<any> {
+    return this.http
+      .post<any>(this.url.concat('/api/admin/updateuserprofile'), {
+        ProfileData,
+      })
+      .pipe(catchError(this.handleError));
+  }
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    const req = new HttpRequest('POST', `${this.url}/api/image-uplaoad`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';

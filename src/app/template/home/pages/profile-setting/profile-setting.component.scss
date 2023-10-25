@@ -1,17 +1,8 @@
-// * {
-//   padding: 1%;
-// }
-
-// body{
-//   background: var(--body-color);
-//   height: 100vh;
-// }
-// .container {
-//   margin: auto;
-//   padding: 20px;
-//   text-align: center;
-//   height: 100vh;
-// }
+body{
+  background: var(--body-color);
+  height: 100vh;
+  padding:  3%;
+}
 .container{
   height: 84%;
   border-radius: 6px;
@@ -144,7 +135,10 @@ button[type="submit"]:hover {
   margin-left: -20px;
 
 }
-body{
-  background: var(--body-color);
-  height: 100vh;
+
+.square-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }

@@ -1,103 +1,137 @@
 <body>
-  <div class="container p-0">
+
     <h1 class="mat-h3 mb-3">Profile Settings</h1>
-    <div class="row">
-      <!-- Profile Settings Content -->
-      <div class="col-md-12">
-        <div class="mat-tab-group">
-          <!-- Account Tab -->
-          <mat-tab-group dynamicHeight="true" [selectedIndex]="0">
-            <!-- Private Info Tab -->
-            <mat-tab label="User Information">
-              <div class="mat-card mt-3">
-                <div class="card-header">
-                  <h5 class="mat-card-title mb-0">Private Information</h5>
-                </div>
-                <div class="mat-card-content">
-                  <!-- User Profile Section -->
-                  <div class="user-profile-section">
-                    <!-- Information update form -->
-                    <form (ngSubmit)="onInfoSubmit()" [formGroup]="profileForm">
-                      <!-- Email -->
-                      <mat-form-field class="full-width">
-                        <mat-label>First Name</mat-label>
-                        <input matInput type="email" placeholder="First Name" id="inputEmail4" formControlName="fname" readonly>
-                      </mat-form-field>
-                      <mat-form-field class="full-width">
-                        <mat-label>Last Name</mat-label>
-                        <input matInput type="email" placeholder="Last Name" id="inputEmail4" formControlName="lname" readonly>
-                      </mat-form-field>
-                      <mat-form-field class="full-width">
-                        <mat-label>Email</mat-label>
-                        <input matInput type="email" placeholder="Email" id="inputEmail4" formControlName="email" required>
-                      </mat-form-field>
-                      <!-- Address -->
-                      <mat-form-field class="full-width">
-                        <mat-label>Address</mat-label>
-                        <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="address">
-                      </mat-form-field>
-                      <div class="photo-container">
-                        <div class="profile-photo">
-                          <img [src]="userPhoto || defaultProfilePhotoUrl" alt="Photo" (click)="fileInput.click()">
-                          <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
-                          <button mat-icon-button class="button" (click)="fileInput.click()">
-                            <mat-icon>photo_camera</mat-icon>
-                          </button>
-                        </div>
-                      </div>
-                      <button mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
-                    </form>
+    <div class="mat-tab-group">
+      <!-- Account Tab -->
+      <mat-tab-group dynamicHeight="true" [selectedIndex]="0">
+        <!-- Private Info Tab -->
+        <mat-tab label="User Information">
+          <div class="mat-card mt-3">
+            <div class="card-header">
+              <h5 class="mat-card-title mb-0">Private Information</h5>
+            </div>
+            <div class="mat-card-content">
+              <!-- User Profile Section -->
+              <div class="user-profile-section">
+                <!-- Information update form -->
+                <form (ngSubmit)="onInfoSubmit()" [formGroup]="profileForm">
+                  <!-- Email -->
+                  <mat-form-field class="full-width">
+                    <mat-label>First Name</mat-label>
+                    <input matInput type="text" placeholder="First Name" id="inputEmail4" formControlName="fname" readonly>
+                  </mat-form-field>
+                  <mat-form-field class="full-width">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput type="email" placeholder="Last Name" id="inputEmail4" formControlName="lname" readonly>
+                  </mat-form-field>
+                  <!-- Address -->
+                  <mat-form-field class="full-width">
+                    <mat-label>Address</mat-label>
+                    <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="address">
+                  </mat-form-field>
+                  <mat-form-field class="full-width">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="mobile_number">
+                  </mat-form-field>
+                  <mat-form-field class="full-width" *ngIf="account_type === 4">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="mobile_number">
+                  </mat-form-field>
+                  <div class="photo-container">
+                    <!-- <div class="profile-photo">
+                      <img [src]="userPhoto" alt="Photo" (click)="fileInput.click()">
+                      <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
+                    </div> -->
+                    <div class="" *ngIf="!imagePreview">
+                      <img
+                        [src]="fileUrl"
+                        class="rounded-circle img-thumbnail square-image"
+                      />
+                    </div>
+                    <div class="form-group text-center" *ngIf="imagePreview">
+                      <img
+                        [src]="imagePreview"
+                        class="rounded-circle img-thumbnail square-image"
+                      />
                     </div>
                   </div>
-                  
-
-            <!-- Security Tab -->
-            <mat-tab label="Security">
-              <div class="mat-card mt-3">
-                <div class="card-header">
-                  <h5 class="mat-card-title mb-0">Password and Security</h5>
-                </div>
-                <div class="mat-card-content">
-                  <!-- Password update form -->
-                  <form (ngSubmit)="onPasswordSubmit()" [formGroup]='profileForm'>
-                    <!-- Current Password -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Enter your Password</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" placeholder="Current password" id="inputPasswordCurrent"  formControlName="password" required>
-                      <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <!-- New Password -->
-                    <mat-form-field class="full-width">
-                      <mat-label>New password</mat-label>
-                      <input matInput type="password" placeholder="New password" id="inputPasswordNew" formControlName="confirmPassword" required>
-                      <button mat-icon-button matSuffix class="button"(click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <!-- Verify Password -->
-                    <mat-form-field class="full-width">
-                      <mat-label>Verify password</mat-label>
-                      <input matInput type="password" placeholder="Verify password" id="inputPasswordNew2" required>
-                      <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <button mat-raised-button color="primary" type="submit" class="large-button">Update</button>
-                  </form>
-                  <!-- Success message for password update -->
-                  <div *ngIf="passwordSuccess" class="mat-alert mat-success">
-                    Password updated successfully!
+                  <div class="text-center mb-2">
+                    <div class="form-group text-center" *ngIf="!imagePreview">
+                      <img
+                        [src]="fileUrl"
+                        class="rounded-circle img-thumbnail square-image"
+                      />
+                    </div>
+                    <div class="form-group text-center" *ngIf="imagePreview">
+                      <img
+                        [src]="imagePreview"
+                        class="rounded-circle img-thumbnail square-image"
+                      />
+                    </div>
                   </div>
+
+                  <div class="form-group">
+                    <input
+                      type="file"
+                      class="form-control"
+                      accept="image/x-png,image/jpeg,image/jpg"
+                      (change)="selectFile($event)"
+                    />
+                  </div>
+                  <button (click)="update()" mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
+                </form>
                 </div>
               </div>
-            </mat-tab>
+
+
+        <!-- Security Tab -->
+        <mat-tab label="Security">
+          <div class="mat-card mt-3">
+            <div class="card-header">
+              <h5 class="mat-card-title mb-0">Password and Security</h5>
+            </div>
+            <div class="mat-card-content">
+              <!-- Password update form -->
+              <form (ngSubmit)="onPasswordSubmit()" [formGroup]='profileForm'>
+                <mat-form-field class="full-width">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" placeholder="Email" id="inputEmail4" formControlName="email" required>
+                </mat-form-field>
+                <!-- Current Password -->
+                <mat-form-field class="full-width">
+                  <mat-label>Enter your Password</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" placeholder="Current password" id="inputPasswordCurrent"  formControlName="password" required>
+                  <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <!-- New Password -->
+                <mat-form-field class="full-width">
+                  <mat-label>New password</mat-label>
+                  <input matInput type="password" placeholder="New password" id="inputPasswordNew" formControlName="confirmPassword" required>
+                  <button mat-icon-button matSuffix class="button"(click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <!-- Verify Password -->
+                <mat-form-field class="full-width">
+                  <mat-label>Verify password</mat-label>
+                  <input matInput type="password" placeholder="Verify password" id="inputPasswordNew2" required>
+                  <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" class="large-button">Update</button>
+              </form>
+              <!-- Success message for password update -->
+              <div *ngIf="passwordSuccess" class="mat-alert mat-success">
+                Password updated successfully!
               </div>
-            </mat-tab>
-          </mat-tab-group>
-        </div>
-      </div>
+            </div>
+          </div>
+        </mat-tab>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
-  </div>
 </body>

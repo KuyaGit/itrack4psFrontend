@@ -1,6 +1,3 @@
-* {
-  padding: 1%;
-}
 
 body{
   background: var(--body-color);
@@ -53,5 +50,15 @@ mat-label{
 }
 .bottom-buttons{
   padding: 2%;
+}
+.table-container{
+  margin-top: 1%;
+  border-radius: 10%;
+}
+.square-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 

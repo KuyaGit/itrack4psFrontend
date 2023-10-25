@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, AbstractControl,FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Subscription } from 'rxjs';
-import Swal from 'sweetalert2';
 import { AlertServiceService } from 'src/app/services/alert-service.service';
-import { accoundetails } from 'src/app/services/data';
-
+import { accountdetails, userprofile } from 'src/app/services/data';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-setting',
@@ -13,10 +12,12 @@ import { accoundetails } from 'src/app/services/data';
   styleUrls: ['./profile-setting.component.scss']
 })
 export class ProfileSettingComponent implements OnInit{
-  profileInfo : accoundetails[] = [];
+  id: any = localStorage.getItem('user_loginSession')
+  account_type = (JSON.parse(this.id)).account_type;
+  profileInfo!: any;
+  fileUrl: string = '';
   hide = true;
   isInputDisabled = false;
-  defaultProfilePhotoUrl = 'assets/default-profile-photo.png';
   subscription: Subscription = new Subscription();
   profileForm : FormGroup;
   constructor(
@@ -30,12 +31,12 @@ export class ProfileSettingComponent implements OnInit{
       email : ['', [Validators.required, Validators.email]],
       fname : ['', [Validators.required]],
       lname : ['', [Validators.required]],
-      password :['', [Validators.required]],
-      confirmPassword : ['', [Validators.required]],
       mobile_number : ['', [Validators.required]],
       address : ['', [Validators.required]],
-
-
+      schoolName: [''],
+      profile_piclink: [''],
+      password :['', [Validators.required]],
+      confirmPassword : ['', [Validators.required]],
     })
   }
   get form(): { [key: string]: AbstractControl } {
@@ -53,7 +54,11 @@ export class ProfileSettingComponent implements OnInit{
 
   onPasswordSubmit() {
     if (this.profileForm.controls['password'] !== this.profileForm.controls['confirmPassword']) {
-      alert("Passwords do not match. Please try again.");
+      this._alertService.simpleAlert(
+        'error',
+        'Password not match',
+        'Password must match'
+      );
       return;
     }
     this.passwordSuccess = true;
@@ -66,20 +71,8 @@ export class ProfileSettingComponent implements OnInit{
     this.profileForm.controls['name'].value;
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.userPhoto = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-  userPhoto: string = 'assets/defaut-profile-photo.jpg';
+
   accountuser_id : number = 0;
-
-
   getProfileData() {
     const userSessString = localStorage.getItem('user_loginSession');
     if (userSessString !== null) {
@@ -88,9 +81,96 @@ export class ProfileSettingComponent implements OnInit{
     }
     this.subscription.add(
       this._dataService.get_user_profile(this.accountuser_id).subscribe((result) => {
+        console.log(result);
         this.profileInfo = result.result[0];
+        console.log(this.profileInfo)
+        this.fileUrl = this.profileInfo.profile_piclink;
         this.profileForm.patchValue(this.profileInfo);
+
       })
+
     );
+  }
+
+  selectedFiles?: FileList;
+  currentFile?: File;
+  progress = 0;
+  message = '';
+  imagePreview: string | ArrayBuffer | null = null;
+  selectedFileName!: any;
+
+  previewImage(file: File): void {
+    const reader = new FileReader();
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+  clearImagePreview(): void {
+    this.imagePreview = null;
+  }
+  upload(): void {
+    this.progress = 0;
+
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+      if (file) {
+        this.currentFile = file;
+        this._dataService.upload(this.currentFile).subscribe({
+          next: (event: any) => {
+            if (event instanceof HttpResponse) {
+              this.message = event.body.message;
+            }
+          },
+          error: (err: any) => {
+            console.log(err);
+            this.progress = 0;
+
+            if (err.error && err.error.message) {
+              this.message = err.error.message;
+            } else {
+              this.message = 'Could not upload the file!';
+            }
+            this.currentFile = undefined;
+          },
+        });
+      }
+      this.selectedFiles = undefined;
+    }
+  }
+
+  selectFile(event: any): void {
+    this.selectedFiles = event.target.files;
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      this.selectedFileName = this.selectedFiles[0].name;
+      this.profileForm.get('profile_piclink')?.setValue(this.selectedFileName);
+      const file: File = this.selectedFiles[0];
+      // Display a preview of the selected image
+      this.previewImage(file);
+    }
+  }
+  update() {
+    this._dataService.update_profile(this.profileForm.value).subscribe(
+      async (result) => {
+        if (result && result.status === '200') {
+          this.handleSuccess('Profile updated');
+          this.upload()
+          await this.getProfileData();
+        } else {
+          this.handleError('Failed to update profile');
+        }
+      },
+      (error) => {
+        this.handleError('An error occurred while updating profile');
+        console.error(error);
+      }
+    );
+  }
+  private handleSuccess(message: any) {
+    this._alertService.simpleAlert('success', 'success', message);
+  }
+
+  private handleError(message: any) {
+    this._alertService.simpleAlert('error', 'error', message);
   }
 }
