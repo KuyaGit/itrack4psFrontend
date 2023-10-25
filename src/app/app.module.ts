@@ -20,10 +20,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent
+
   ],
   imports: [
     BrowserModule,

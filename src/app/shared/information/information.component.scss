@@ -1,0 +1,68 @@
+body{
+  padding:  3%;
+}
+
+header{
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.user-image{
+  height: 50%;
+  img{
+    border-radius: 50%;
+    width: 50%;
+  }
+}
+.name {
+  top: 0%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.mat-grid-list{
+  padding: 3%;
+}
+.image{
+  top: 0%;
+  left: 0;
+  right: 1%;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-right: 5%;
+  margin: 0;
+}
+.full-width {
+  width: 100%;
+}
+
+.first-info{
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-bottom: 3% ;
+}
+form{
+  padding-top: 1%
+}
+.title{
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  padding: 1%;
+}
+.second-info{
+  padding: 5%;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-bottom: 3% ;
+}

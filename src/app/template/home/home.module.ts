@@ -30,6 +30,10 @@ import { ProfileSettingComponent } from './pages/profile-setting/profile-setting
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { InformationComponent } from 'src/app/shared/information/information.component';
+import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.component';
+
+
 
 
 
@@ -40,7 +44,11 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     DashboardComponent,
     HouseholdbeneficiaryComponent,
     UsermanagementComponent,
-    ProfileSettingComponent
+    ProfileSettingComponent,
+    InformationComponent,
+    UpdateinfoComponent
+
+
 
   ],
   imports: [

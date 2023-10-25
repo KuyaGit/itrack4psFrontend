@@ -5,14 +5,15 @@ export interface accountuser {
   account_type : number;
 }
 
-export interface accoundetails {
+export interface accountdetails {
   accoundetails_id : number;
   fName : string;
   lName : string;
   address : string;
   schoolName : string;
+  mobile_number : number;
   householdNumber : string;
-  profilePic : string;
+  profile_piclink : string;
 }
 
 export interface child_beneficiary{
@@ -44,4 +45,37 @@ export interface getalluser {
   householdNumber : string;
   profile_piclink : string;
   account_type : number;
+  accountTypeName: string;
+}
+
+export interface schoolname {
+  schoolName : string;
+}
+
+export interface ProfileData {
+  accountsdetails_id : number;
+  fName : string;
+  lName : string;
+  address : string;
+  schoolName : string;
+  mobile_number : number;
+  householdNumber : string;
+  profile_piclink : string;
+  email: string;
+  password: string;
+}
+
+export interface userprofile{
+  accoundetails_id : number;
+  fName : string;
+  lName : string;
+  address : string;
+  schoolName : string;
+  mobile_number : number;
+  householdNumber : string;
+  profile_piclink : string;
+}
+
+export interface createbeneficiaryForm{
+  householdNumber : string;
 }

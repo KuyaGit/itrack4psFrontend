@@ -50,23 +50,19 @@
               <mat-radio-group aria-label="Select an option" formControlName="account_type">
                 <mat-radio-button class="example-radio-button" value="1">Admin</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="2">4ps Staff</mat-radio-button>
-                <mat-radio-button class="example-radio-button" value="3">4ps Beneficiary</mat-radio-button>
                 <mat-radio-button class="example-radio-button" value="4">School Registrar</mat-radio-button>
               </mat-radio-group>
               <mat-form-field *ngIf="createaccountForm.controls.account_type && createaccountForm.controls.account_type.value == '4'" appearance="outline" class="width-100" hideRequiredMarker="true">
-                  <mat-label>School Name</mat-label>
-                  <input matInput placeholder="School" formControlName="schoolName">
-                  <mat-error class="error-message">
-                    <span *ngIf="createaccountForm.controls['schoolName'].errors?.touched || createaccountForm.controls['schoolName'].errors?.required">This field is required.</span>
-                  </mat-error>
-              </mat-form-field>
-              <mat-form-field *ngIf="createaccountForm.controls.account_type && createaccountForm.controls.account_type.value == '3'" appearance="outline" class="width-100" hideRequiredMarker="true">
-                <mat-label>Household ID</mat-label>
-                <input matInput placeholder="Household ID" formControlName="householdnumber">
+                <mat-label>School Name</mat-label>
+                <mat-select formControlName="schoolName">
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
                 <mat-error class="error-message">
-                  <span *ngIf="createaccountForm.controls['householdnumber'].errors?.touched || createaccountForm.controls['householdnumber'].errors?.required">This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['schoolName'].errors?.touched || createaccountForm.controls['schoolName'].errors?.required">This field is required.</span>
                 </mat-error>
-            </mat-form-field>
+              </mat-form-field>
             </div>
           </form>
       </mat-grid-list>
@@ -76,8 +72,68 @@
   <button mat-fab extended color="primary" [mat-dialog-close]="true" (click)="adduserSubscription()" [disabled]="!createaccountForm.valid" >Add User</button>
 </div>
 </ng-template>
-<body>
+<ng-template #createBeneModal class="create-modal">
+  <h2 mat-dialog-title>Create Household Beneficiary Account</h2>
+  <mat-dialog-content class="mat-typography">
+      <mat-grid-list cols="1">
+        <form [formGroup]="createbeneForm">
+          <div class="example-container">
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Household ID</mat-label>
+              <input matInput placeholder="Household ID" formControlName="householdNumber">
+              <mat-error class="error-message">
+                <span *ngIf="createbeneForm.controls['householdNumber'].errors?.touched || createbeneForm.controls['householdNumber'].errors?.required">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="fName" required>
+              <mat-error class="error-message">
+                <span *ngIf="createbeneForm.controls.fName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+              <mat-label>Surname</mat-label>
+              <input matInput formControlName="lName">
+              <mat-error class="error-message">
+                <span *ngIf="createbeneForm.controls.lName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. juandelacruz@gmail.com" formControlName="email" >
+              <mat-error class="error-message">
+                <span *ngIf="createbeneForm.controls['email'].errors?.touched || createbeneForm.controls['email'].errors?.required">This field is required.</span>
+                <span *ngIf="createbeneForm.controls['email'].errors?.pattern">Please enter a valid email address.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Enter password</mat-label>
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error class="error-message">
+                <span *ngIf="createbeneForm.controls.password.touched && createbeneForm.controls['password'].errors?.required">
+                  This field is required.</span>
+                <span *ngIf="createbeneForm.controls['password'].errors?.minlength">This password must 6 or more characters</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+          </div>
+        </form>
+    </mat-grid-list>
+  </mat-dialog-content>
+<div mat-dialog-actions align="end" class="bottom-buttons">
+<button mat-button mat-dialog-close>Cancel</button>
+<button mat-fab extended color="primary" [mat-dialog-close]="true" (click)="registerSubscription()" [disabled]="!createbeneForm.valid" >Add User</button>
+</div>
+</ng-template>
 
+
+<body>
   <!-- <div class="container"> -->
     <div class="header">
       <header>User Management</header>
@@ -85,6 +141,10 @@
             <mat-icon>add</mat-icon>
             Add User
         </button>
+        <button mat-fab extended color="primary" class="add-button" (click)="openDialog(createBeneModal)">
+          <mat-icon>add</mat-icon>
+          Add Beneficiary
+      </button>
     </div>
     <div class="table-container">
       <table mat-table [dataSource]="alluserList" matSort>
@@ -117,15 +177,27 @@
             {{ item.mobile_number }}
         </td>
       </ng-container>
+      <ng-container matColumnDef="account_type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Type </th>
+        <td mat-cell *matCellDef="let user">
+            {{ user.accountTypeName }}
+        </td>
+      </ng-container>
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let item">
-            <button type="button"
-                (click)="viewItem(item.accountsdetails_id)">View</button>
+              <button mat-icon-button (click)="viewItem(item.accountuser_id)">
+                <mat-icon> preview </mat-icon>
+              </button>
+              <button mat-icon-button (click)="updateItem(item.accountuser_id)">
+                <mat-icon> edit </mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteuser(item.accountuser_id)">
+                <mat-icon> person_remove </mat-icon>
+              </button>
         </td>
     </ng-container>
       </table>
-    <!-- </div> -->
     <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10"
                 [length]="alluserData.data.length"></mat-paginator>
   </div>
