@@ -8,9 +8,14 @@ import { Subject } from 'rxjs';
 })
 export class SessionService {
 	redirectUrl: string = "";
+	isNavVisible: boolean = false;
+	isUserLoggedIn: boolean = false;
 	isAlertOnceOnTokenExpire: boolean = false;
 	acccountuser_id: number = 0;
 	account_type: number = 0;
+
+  navbarVisibilityChange: Subject<boolean> = new Subject<boolean>();
+	isUserLoggedInStatus: Subject<boolean> = new Subject<boolean>();
 
 	constructor(
 		private router: Router
@@ -20,11 +25,19 @@ export class SessionService {
 		localStorage.setItem('user_loginSession', token);
 	}
 
+	isUserLogginToggle(val: boolean) {
+		this.isUserLoggedInStatus.next(val);
+	}
+
+	toggleNavbarVisibility(val: boolean) {
+		this.navbarVisibilityChange.next(val);
+	}
+
 	getToken() {
 		var sessionVal: any;
         sessionVal = localStorage.getItem('user_loginSession');
 		if (sessionVal) {
-            this.acccountuser_id  = JSON.parse(sessionVal)['accountuser_id'];
+      this.acccountuser_id  = JSON.parse(sessionVal)['accountuser_id'];
 			this.account_type  = JSON.parse(sessionVal)['account_type'];
         }
 		return sessionVal;

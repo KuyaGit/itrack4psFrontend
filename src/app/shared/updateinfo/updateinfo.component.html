@@ -6,7 +6,7 @@
     <div class="first-info">
       <mat-grid-list cols="2" rowHeight="2:1" >
         <mat-grid-tile class="user-image">
-          <div class="image">
+          <div class="image profile-photo">
             <img class="avatar huge" [src]="userInfo?.profile_piclink">
           </div>
         </mat-grid-tile>
@@ -30,7 +30,7 @@
       <form [formGroup]="profileForm">
         <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
           <mat-label>Email</mat-label>
-          <input matInput type="text" placeholder="Email" id="inputEmail4" formControlName="address">
+          <input matInput type="text" placeholder="Email" id="inputEmail4" formControlName="email">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
           <mat-label>Address</mat-label>

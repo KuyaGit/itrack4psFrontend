@@ -15,6 +15,7 @@ export class ProfileSettingComponent implements OnInit{
   id: any = localStorage.getItem('user_loginSession')
   account_type = (JSON.parse(this.id)).account_type;
   profileInfo!: any;
+  defaultProfilePhotoUrl: string = 'assets/default.png'
   fileUrl: string = '';
   hide = true;
   isInputDisabled = false;
@@ -111,7 +112,6 @@ export class ProfileSettingComponent implements OnInit{
   }
   upload(): void {
     this.progress = 0;
-
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
       if (file) {
@@ -141,14 +141,37 @@ export class ProfileSettingComponent implements OnInit{
 
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
+
     if (this.selectedFiles && this.selectedFiles.length > 0) {
-      this.selectedFileName = this.selectedFiles[0].name;
-      this.profileForm.get('profile_piclink')?.setValue(this.selectedFileName);
       const file: File = this.selectedFiles[0];
-      // Display a preview of the selected image
-      this.previewImage(file);
+
+      // Check the file size
+      if (file.size <= 2 * 1024 * 1024) { // 2MB or smaller
+        // Check the aspect ratio
+        const image = new Image();
+        image.src = URL.createObjectURL(file);
+
+        image.onload = () => {
+          const width = image.width;
+          const height = image.height;
+
+          if (width === height) { // Square (2x2 pixels)
+            this.selectedFileName = file.name;
+            this.profileForm.get('profile_piclink')?.setValue(this.selectedFileName);
+
+            // Display a preview of the selected image
+            this.previewImage(file);
+          } else {
+            this.handleError('Image must be a square image.')
+
+          }
+        };
+      } else {
+        this.handleError('File size exceeds the maximum allowed size (2MB).');
+      }
     }
   }
+
   update() {
     this._dataService.update_profile(this.profileForm.value).subscribe(
       async (result) => {
@@ -171,6 +194,6 @@ export class ProfileSettingComponent implements OnInit{
   }
 
   private handleError(message: any) {
-    this._alertService.simpleAlert('error', 'error', message);
+    this._alertService.simpleAlert('error', 'Error', message);
   }
 }
