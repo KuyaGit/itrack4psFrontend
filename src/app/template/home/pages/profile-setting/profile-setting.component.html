@@ -1,9 +1,8 @@
 <body>
-
     <h1 class="mat-h3 mb-3">Profile Settings</h1>
     <div class="mat-tab-group">
       <!-- Account Tab -->
-      <mat-tab-group dynamicHeight="true" [selectedIndex]="0">
+      <mat-tab-group dynamicHeight="true" [selectedIndex]="0" class="information">
         <!-- Private Info Tab -->
         <mat-tab label="User Information">
           <div class="mat-card mt-3">
@@ -37,51 +36,21 @@
                     <mat-label>Mobile Number</mat-label>
                     <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="mobile_number">
                   </mat-form-field>
-                  <div class="photo-container">
-                    <!-- <div class="profile-photo">
-                      <img [src]="userPhoto" alt="Photo" (click)="fileInput.click()">
-                      <input type="file" accept="image/*" #fileInput (change)="onFileSelected($event)" style="display: none;">
-                    </div> -->
-                    <div class="" *ngIf="!imagePreview">
-                      <img
-                        [src]="fileUrl"
-                        class="rounded-circle img-thumbnail square-image"
-                      />
-                    </div>
-                    <div class="form-group text-center" *ngIf="imagePreview">
-                      <img
-                        [src]="imagePreview"
-                        class="rounded-circle img-thumbnail square-image"
-                      />
-                    </div>
+                  <div class="center" *ngIf="!imagePreview">
+                      <img [src]="fileUrl" alt="Photo" (click)="fileInput.click()" class="profile-photo">
+                      <i class='bx bxs-camera' ></i>
+                      <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
                   </div>
-                  <div class="text-center mb-2">
-                    <div class="form-group text-center" *ngIf="!imagePreview">
-                      <img
-                        [src]="fileUrl"
-                        class="rounded-circle img-thumbnail square-image"
-                      />
-                    </div>
-                    <div class="form-group text-center" *ngIf="imagePreview">
-                      <img
-                        [src]="imagePreview"
-                        class="rounded-circle img-thumbnail square-image"
-                      />
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <input
-                      type="file"
-                      class="form-control"
-                      accept="image/x-png,image/jpeg,image/jpg"
-                      (change)="selectFile($event)"
-                    />
-                  </div>
-                  <button (click)="update()" mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
+                  <div class="center" *ngIf="imagePreview">
+                    <img [src]="imagePreview" alt="Photo" (click)="fileInput.click()" class="profile-photo">
+                    <i class='bx bxs-camera' ></i>
+                    <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
+                </div>
                 </form>
                 </div>
+                <button (click)="update()" mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
               </div>
+
 
 
         <!-- Security Tab -->
@@ -120,6 +89,7 @@
                   <button mat-icon-button matSuffix class="button" (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                   </button>
+
                 </mat-form-field>
                 <button mat-raised-button color="primary" type="submit" class="large-button">Update</button>
               </form>

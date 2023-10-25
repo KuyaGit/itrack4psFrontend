@@ -29,7 +29,8 @@ export class UsermanagementComponent implements OnInit{
   hide = true;
   createaccountForm: FormGroup;
   createbeneForm: FormGroup;
-
+  id: any = localStorage.getItem('user_loginSession')
+  account_type = (JSON.parse(this.id)).account_type;
 
   displayedColumns: string[] = [
     'accountsdetails_id',

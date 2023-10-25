@@ -31,14 +31,8 @@ header{
   padding: 3%;
 }
 .image{
-  top: 0%;
-  left: 0;
-  right: 1%;
-  bottom: 0;
-  position: absolute;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   height: 100%;
   padding-right: 5%;
   margin: 0;
@@ -68,4 +62,23 @@ form{
 }
 button{
   margin-right: 2%;
+}
+
+.profile-photo {
+  border-radius: 50%;
+  width: 50%;
+  height: 20% !important;
+  overflow: hidden;
+  border: 5px solid #007E94;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  position: absolute;
 }
