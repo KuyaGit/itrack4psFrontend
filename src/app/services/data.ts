@@ -14,6 +14,7 @@ export interface accountdetails {
   mobile_number : number;
   householdNumber : string;
   profile_piclink : string;
+  account_type : number;
 }
 
 export interface child_beneficiary{
@@ -79,3 +80,10 @@ export interface userprofile{
 export interface createbeneficiaryForm{
   householdNumber : string;
 }
+
+export interface changepassword{
+  accountuser_id : number;
+  password : string;
+  newpassword : string;
+}
+

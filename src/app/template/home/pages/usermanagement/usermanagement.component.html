@@ -137,22 +137,24 @@
   <!-- <div class="container"> -->
     <div class="header">
       <header>User Management</header>
-        <button mat-fab extended color="primary" class="add-button" (click)="openDialog(createaccountModal)">
+        <button mat-raised-button extended color="primary" class="add-button" (click)="openDialog(createaccountModal)">
             <mat-icon>add</mat-icon>
             Add User
         </button>
-        <button mat-fab extended color="primary" class="add-button" (click)="openDialog(createBeneModal)">
+        <button mat-raised-button extended color="primary" class="add-button" (click)="openDialog(createBeneModal)">
           <mat-icon>add</mat-icon>
           Add Beneficiary
       </button>
     </div>
     <div class="table-container">
-      <table mat-table [dataSource]="alluserList" matSort>
+      <table mat-table [dataSource]="alluserData" matSort>
         <!-- header row -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <!-- column -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <div class="table-container">
 
+        </div>
         <ng-container matColumnDef="accountsdetails_id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Account User Details ID </th>
           <td mat-cell *matCellDef="let item">

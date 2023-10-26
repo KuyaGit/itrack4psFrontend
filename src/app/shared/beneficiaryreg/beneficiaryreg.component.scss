@@ -16,7 +16,12 @@ body{
   }
 }
 .add-button{
+  margin-left: 1vw;
   margin-right: 1vw;
+  font-size: 15px;
+  line-height: 18px;
+  height: 30px;
+
 }
 .container{
   padding-top: 1%;
@@ -48,9 +53,7 @@ mat-label{
 }
 .table-container{
   margin-top: 1%;
-  height: 90%;
-  max-width: 100%;
-  overflow: auto;
+  border-radius: 10%;
 }
 .square-image {
   width: 100px;
@@ -59,7 +62,3 @@ mat-label{
   border-radius: 50%;
 }
 
-
-.table {
-  overflow: hidden;
-}

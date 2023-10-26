@@ -32,7 +32,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { InformationComponent } from 'src/app/shared/information/information.component';
 import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.component';
-
+import { BeneficiaryregComponent } from 'src/app/shared/beneficiaryreg/beneficiaryreg.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -46,8 +47,8 @@ import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.compon
     UsermanagementComponent,
     ProfileSettingComponent,
     InformationComponent,
-    UpdateinfoComponent
-
+    UpdateinfoComponent,
+    BeneficiaryregComponent
 
 
   ],
@@ -73,8 +74,8 @@ import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.compon
     MatMenuModule,
     MatTabsModule,
     MatTableModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
+    MatSortModule
 
   ]
 })

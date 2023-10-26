@@ -1,121 +1,43 @@
-
 <body>
-  <div class="container">
-    <header>Beneficiaries Form</header>
-    <form action="#">
-      <div class="form first">
-        <div class="details personal">
-          <span class="title">Personal Details</span>
-          <div class="fields">
-            <div class="input-field">
-              <label>Full Name</label>
-              <input type="text" placeholder="Enter your name" required >
-            </div>
-            <div class="input-field">
-              <label>Date of Birth</label>
-              <input type="date" placeholder="Enter birth date" required >
-            </div>
-            <div class="input-field">
-              <label>Email</label>
-              <input type="text" placeholder="Enter your email" required >
-            </div>
-            <div class="input-field">
-              <label>Mobile Number</label>
-              <input type="number" placeholder="Enter mobile number" required >
-            </div>
-            <div class="input-field">
-              <label>Gender</label>
-              <select required>
-                <option disabled selected>Select gender</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Others</option>
-              </select>
-            </div>
-            <div class="input-field">
-              <label>Occupation</label>
-              <input type="text" placeholder="Enter your occupation" required >
-            </div>
-          </div>
-        </div>
+  <!-- <div class="container"> -->
+    <div class="header">
+      <header>4Ps Beneficiaries</header>
+      <button *ngIf="account_type === 1 || account_type === 2" mat-raised-button color="primary" (click)="createbeneficiaryAccount()">Add Beneficiary Account</button>
+    </div>
 
-        <div class="details ID">
-          <span class="title">Identity Details</span>
+    <div class="table-container">
+      <table mat-table [dataSource]="alluserList" matSort>
+        <!-- header row -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <!-- column -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-          <div class="fields">
-            <div class="input-field">
-              <label>ID Type</label>
-              <input type="text" placeholder="Enter ID type" required >
-            </div>
-
-            <div class="input-field">
-              <label>Household ID</label>
-              <input type="number" placeholder="Enter ID number" required >
-            </div>
-          </div>
-
-          <button class="nextBtn">
-            <span class="btnText">Next</span>
-            <i class="uil uil-navigator"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="form second">
-        <div class="details address">
-          <span class="title">Address Details</span>
-
-          <div class="fields">
-            <div class="input-field">
-              <label>Address Type</label>
-              <input type="text" placeholder="Permanent or Temporary" required>
-            </div>
-
-            <div class="input-field">
-              <label>Nationality</label>
-              <input type="text" placeholder="Enter nationality" required >
-            </div>
-
-            <div class="input-field">
-              <label>State</label>
-              <input type="text" placeholder="Enter your state" required >
-            </div>
-
-            <div class="input-field">
-              <label>District</label>
-              <input type="text" placeholder="Enter your district" required >
-            </div>
-          </div>
-        </div>
-
-        <div class="details family">
-          <span class="title">Family Details</span>
-
-          <div class="fields">
-            <div class="input-field">
-              <label>Father Name</label>
-              <input type="text" placeholder="Enter father name" required >
-            </div>
-
-            <div class="input-field">
-              <label>Mother Name</label>
-              <input type="text" placeholder="Enter mother name" required>
-            </div>
-          </div>
-
-          <div class="buttons">
-            <div class="backBtn">
-              <i class="uil uil-navigator"></i>
-              <span class="btnText">Back</span>
-            </div>
-
-            <button class="submit" (click)="onSubmit()">
-              <span class="btnText">Submit</span>
-              <i class="uil uil-navigator"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </form>
+        <ng-container matColumnDef="accountuser_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Account User Details ID </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.accountuser_id }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.fname }} {{ item.lname }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+        <td mat-cell *matCellDef="let item">
+            {{ item.address }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="mobile_number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+        <td mat-cell *matCellDef="let item">
+            {{ item.mobile_number }}
+        </td>
+      </ng-container>
+      </table>
+    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10"
+                [length]="alluserData.data.length"></mat-paginator>
   </div>
 </body>
