@@ -6,9 +6,16 @@
     <div class="first-info">
       <mat-grid-list cols="2" rowHeight="2:1" >
         <mat-grid-tile class="user-image">
-          <div class="image profile-photo">
-            <img class="avatar huge" [src]="userInfo?.profile_piclink">
-          </div>
+            <div class="center" *ngIf="!imagePreview">
+              <img [src]="fileUrl" alt="Photo" (click)="fileInput.click()" class="profile-photo">
+              <i class='bx bxs-camera' ></i>
+              <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
+            </div>
+            <div class="center" *ngIf="imagePreview">
+              <img [src]="imagePreview" alt="Photo" (click)="fileInput.click()" class="profile-photo">
+              <i class='bx bxs-camera' ></i>
+              <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
+            </div>
         </mat-grid-tile>
       <mat-grid-tile class="name">
         <div class="name">
@@ -48,6 +55,6 @@
     </div>
   </div>
   <button mat-raised-button color="warn" (click)="closepopup()">Close</button>
-  <button mat-raised-button color="primary" (click)="closepopup()">Update</button>
+  <button mat-raised-button color="primary" (click)="update()">Update</button>
 </body>
 

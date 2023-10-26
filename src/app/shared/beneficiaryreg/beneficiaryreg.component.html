@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Create Household Beneficiary Account</h2>
+  <mat-dialog-content class="mat-typography">
+      <mat-grid-list cols="1">
+        <form [formGroup]="registrationForm">
+          <div class="example-container">
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Household ID</mat-label>
+              <input matInput placeholder="Household ID" formControlName="householdNumber">
+              <mat-error class="error-message">
+                <span *ngIf="registrationForm.controls['householdNumber'].errors?.touched || registrationForm.controls['householdNumber'].errors?.required">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="fName" required>
+              <mat-error class="error-message">
+                <span *ngIf="registrationForm.controls.fName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+              <mat-label>Surname</mat-label>
+              <input matInput formControlName="lName">
+              <mat-error class="error-message">
+                <span *ngIf="registrationForm.controls.lName.touched">This field is required.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="Ex. juandelacruz@gmail.com" formControlName="email" >
+              <mat-error class="error-message">
+                <span *ngIf="registrationForm.controls['email'].errors?.touched || registrationForm.controls['email'].errors?.required">This field is required.</span>
+                <span *ngIf="registrationForm.controls['email'].errors?.pattern">Please enter a valid email address.</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+              <mat-label>Enter password</mat-label>
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error class="error-message">
+                <span *ngIf="registrationForm.controls.password.touched && registrationForm.controls['password'].errors?.required">
+                  This field is required.</span>
+                <span *ngIf="registrationForm.controls['password'].errors?.minlength">This password must 6 or more characters</span>
+              </mat-error>
+            </mat-form-field>
+            <br>
+          </div>
+        </form>
+    </mat-grid-list>
+  </mat-dialog-content>
+<div mat-dialog-actions align="end" class="bottom-buttons">
+<button mat-button mat-dialog-close>Cancel</button>
+<button mat-fab extended color="primary" [mat-dialog-close]="true" (click)="registerSubscription()" [disabled]="!registrationForm.valid" >Add User</button>
+</div>

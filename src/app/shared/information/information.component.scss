@@ -1,7 +1,9 @@
 body{
+  background: var(--body-color);
+  height: 100vh;
+  padding-top: 2% !important;
   padding:  3%;
 }
-
 header{
   font-size: 20px;
   font-weight: 600;

@@ -35,6 +35,8 @@ export class DataService {
     .pipe(catchError(this.handleError));
   }
 
+
+
   public update_profile(ProfileData: any): Observable<any> {
     return this.http
       .post<any>(this.url.concat('/api/admin/updateuserprofile'), {
@@ -42,6 +44,17 @@ export class DataService {
       })
       .pipe(catchError(this.handleError));
   }
+
+
+
+
+  public changepassword( accountuser: any ) : Observable<any> {
+    return this.http.
+    post(this.url.concat('/api/admin/changepassword'),
+      accountuser,
+      ).pipe(catchError(this.handleError));
+  }
+
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('image', file);

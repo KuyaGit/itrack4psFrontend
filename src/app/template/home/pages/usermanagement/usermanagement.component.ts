@@ -60,6 +60,7 @@ export class UsermanagementComponent implements OnInit{
         email : ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', [Validators.required,Validators.minLength(6)]],
         schoolName : [null, [Validators.required]],
+        profile_piclink: 'https://itrack4ps.s3.ap-southeast-2.amazonaws.com/default.png'
       });
       this.createbeneForm = this.formbuilder.group({
         fName : ['', Validators.required],
@@ -67,7 +68,8 @@ export class UsermanagementComponent implements OnInit{
         householdNumber: ['', Validators.required],
         email : ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         password: ['', Validators.required],
-        account_type: [3],
+        profile_piclink: 'https://itrack4ps.s3.ap-southeast-2.amazonaws.com/default.png',
+        account_type: 3,
       })
       this.createaccountForm.controls['account_type'].valueChanges
         .subscribe(value => this.schoolnamerequired(value));
@@ -94,6 +96,8 @@ export class UsermanagementComponent implements OnInit{
       this.getallUser();
     })
   }
+
+
   accountTypeText : string = ''
 
   accountTypeName : any [] = [

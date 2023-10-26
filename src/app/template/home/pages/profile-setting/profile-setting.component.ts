@@ -37,6 +37,7 @@ export class ProfileSettingComponent implements OnInit{
       schoolName: [''],
       profile_piclink: [''],
       password :['', [Validators.required]],
+      newpassword: ['', [Validators.required]],
       confirmPassword : ['', [Validators.required]],
     })
   }
@@ -44,7 +45,6 @@ export class ProfileSettingComponent implements OnInit{
     // This function will return the form controls
     return this.profileForm.controls;
   }
-
   ngOnInit(): void {
     this.getProfileData();
   }
@@ -53,24 +53,37 @@ export class ProfileSettingComponent implements OnInit{
   passwordSuccess: boolean = false;
   infoSuccess: boolean = false;
 
-  onPasswordSubmit() {
-    if (this.profileForm.controls['password'] !== this.profileForm.controls['confirmPassword']) {
+  changepassword() {
+    if (this.profileForm.controls['newpassword'].value !== this.profileForm.controls['confirmPassword'].value) {
       this._alertService.simpleAlert(
         'error',
         'Password not match',
         'Password must match'
-      );
-      return;
+      )
     }
-    this.passwordSuccess = true;
-    this.profileForm.controls['password'].value;
-    this.profileForm.controls['confirmPassword'].value;
+    else{
+      console.log(this.profileForm.value)
+      this._dataService.changepassword(this.profileForm.value).subscribe(
+        async (result) => {
+
+          if (result && result.status === '200') {
+            this.handleSuccess('Password is updated');
+            this.upload()
+            await this.getProfileData();
+          }
+
+          else {
+            this.handleError('Failed to update password');
+          }
+        },
+        (error) => {
+          this.handleError('Password not match on your current password');
+          console.error(error);
+        }
+      );
+    }
   }
 
-  onInfoSubmit() {
-    this.infoSuccess = true;
-    this.profileForm.controls['name'].value;
-  }
 
 
   accountuser_id : number = 0;
@@ -87,9 +100,7 @@ export class ProfileSettingComponent implements OnInit{
         console.log(this.profileInfo)
         this.fileUrl = this.profileInfo.profile_piclink;
         this.profileForm.patchValue(this.profileInfo);
-
       })
-
     );
   }
 

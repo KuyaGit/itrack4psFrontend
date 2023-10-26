@@ -37,7 +37,8 @@ export class RegisterComponent implements OnInit{
       householdNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      account_type: [3],
+      account_type: 3,
+      profile_piclink: 'https://itrack4ps.s3.ap-southeast-2.amazonaws.com/default.png'
     });
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
