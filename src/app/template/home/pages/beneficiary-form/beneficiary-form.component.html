@@ -6,9 +6,9 @@
     </div>
 
     <div class="table-container">
-      <table mat-table [dataSource]="alluserList" matSort>
+      <table mat-table [dataSource]="alluserData" matSort>
         <!-- header row -->
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
         <!-- column -->
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
@@ -37,7 +37,7 @@
         </td>
       </ng-container>
       </table>
-    <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10"
+    <mat-paginator class="mat-paginator-sticky" #paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10"
                 [length]="alluserData.data.length"></mat-paginator>
   </div>
 </body>
