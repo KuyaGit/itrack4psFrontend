@@ -63,3 +63,8 @@ mat-label{
 .table {
   overflow: hidden;
 }
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
