@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>Create Account</h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-grid-list cols="1">
+          <form [formGroup]="createaccountForm">
+            <div class="example-container">
+              <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="fName" required>
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls.fName.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+                <mat-label>Surname</mat-label>
+                <input matInput formControlName="lName">
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls.lName.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Ex. juandelacruz@gmail.com" formControlName="email" >
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls['email'].errors?.touched || createaccountForm.controls['email'].errors?.required">This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['email'].errors?.pattern">Please enter a valid email address.</span>
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true">
+                <mat-label>Enter password</mat-label>
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls.password.touched && createaccountForm.controls['password'].errors?.required">
+                    This field is required.</span>
+                  <span *ngIf="createaccountForm.controls['password'].errors?.minlength">This password must 6 or more characters</span>
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <label id="example-radio-group-label">Account Type</label>
+              <mat-error class="error-message">
+                <span *ngIf="createaccountForm.controls['account_type'].errors?.required">This field is required.</span>
+              </mat-error>
+              <mat-radio-group aria-label="Select an option" formControlName="account_type">
+                <mat-radio-button class="example-radio-button" value="1">Admin</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="2">4ps Staff</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="4">School Registrar</mat-radio-button>
+              </mat-radio-group>
+              <mat-form-field *ngIf="createaccountForm.controls.account_type && createaccountForm.controls.account_type.value == '4'" appearance="outline" class="width-100" hideRequiredMarker="true">
+                <mat-label>School Name</mat-label>
+                <mat-select formControlName="schoolName">
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="createaccountForm.controls['schoolName'].errors?.touched || createaccountForm.controls['schoolName'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>

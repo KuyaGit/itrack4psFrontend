@@ -29,11 +29,12 @@ import { FormsModule } from '@angular/forms';
 import { ProfileSettingComponent } from './pages/profile-setting/profile-setting.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { InformationComponent } from 'src/app/shared/information/information.component';
 import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.component';
 import { BeneficiaryregComponent } from 'src/app/shared/beneficiaryreg/beneficiaryreg.component';
 import { MatSortModule } from '@angular/material/sort';
+import { ChildbeneficiaryComponent } from 'src/app/shared/childbeneficiary/childbeneficiary.component';
 
 
 
@@ -48,7 +49,8 @@ import { MatSortModule } from '@angular/material/sort';
     ProfileSettingComponent,
     InformationComponent,
     UpdateinfoComponent,
-    BeneficiaryregComponent
+    BeneficiaryregComponent,
+    ChildbeneficiaryComponent
 
 
   ],
