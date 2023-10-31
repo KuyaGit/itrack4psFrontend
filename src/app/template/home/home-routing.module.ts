@@ -9,6 +9,7 @@ import { ProfileSettingComponent } from './pages/profile-setting/profile-setting
 import { UsermanagementComponent } from './pages/usermanagement/usermanagement.component';
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 import { AuthGuard } from 'src/app/guard/auth.guard';
+import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
         title: 'Household Beneficiary',
         component: HouseholdbeneficiaryComponent
       },
+      {
+        path: 'studentbeneficiary',
+        title: 'Student Beneficiary',
+        component: SchoolregistrarComponent
+      }
     ]
   },
 

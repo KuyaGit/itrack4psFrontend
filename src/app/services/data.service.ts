@@ -27,6 +27,21 @@ export class DataService {
       })
       .pipe(catchError(this.handleError));
   }
+  public get_child_profile(child_id: number): Observable<any> {
+    return this.http
+      .post<any>(this.url.concat('/api/beneficiary/getchildprofile'), {
+        child_id: child_id,
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  public getbeneficiary(accountuser_id: number): Observable<any> {
+    return this.http
+    .post<any>(this.url.concat('/api/beneficiary/getbeneficiary'), {
+        accountuser_id: accountuser_id,
+      })
+  }
+
 
   public deleteuserprofile(accountuser_id: string): Observable<any> {
     return this.http.post<any>(this.url.concat('/api/admin/deleteuserprofile'), {
@@ -35,7 +50,19 @@ export class DataService {
     .pipe(catchError(this.handleError));
   }
 
+  public deletechildprofile(child_id: string): Observable<any> {
+    return this.http.post<any>(this.url.concat('/api/beneficiary/deletechild'), {
+      child_id: child_id,
+    })
+    .pipe(catchError(this.handleError));
+  }
 
+  public getchildbyschool(schoolname: string): Observable<any>{
+    return this.http.post<any>(this.url.concat('/api/beneficiary/getchildbyschool'), {
+      schoolname: schoolname,
+    })
+    .pipe(catchError(this.handleError))
+  }
 
   public update_profile(ProfileData: any): Observable<any> {
     return this.http
@@ -44,9 +71,21 @@ export class DataService {
       })
       .pipe(catchError(this.handleError));
   }
+  public update_beneficiary_status(child_id: number, beneficiary_status: number): Observable<any> {
+    return this.http
+      .post<any>(this.url.concat('/api/beneficiary/updatechildbeneficiarystatus'), {
+        child_id,
+        beneficiary_status
+      })
+      .pipe(catchError(this.handleError));
+  }
 
-
-
+  public addchildbeneficiary(childbeneficiary : any): Observable<any> {
+    return this.http
+    .post<any>(this.url.concat('/api/beneficiary/addbeneficiary'), {
+        childbeneficiary,
+      })
+  }
 
   public changepassword( accountuser: any ) : Observable<any> {
     return this.http.

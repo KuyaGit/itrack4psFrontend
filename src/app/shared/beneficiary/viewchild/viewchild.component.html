@@ -1,0 +1,108 @@
+
+<body>
+    <div class="title">
+      <header>{{data.title}}</header>
+      <button mat-fab extended disabled *ngIf="this.beneStatus == 2">
+        <mat-icon>pending</mat-icon>
+        Pending
+      </button>
+      <button mat-fab extended class="disabled" color="primary" *ngIf="this.beneStatus == 1">
+        <mat-icon>recommend</mat-icon>
+        Approved
+      </button>
+      <button mat-fab extended class="disabled" color="warn" *ngIf="this.beneStatus == 3">
+        <mat-icon>recommend</mat-icon>
+        Declined
+      </button>
+    </div>
+    <div class="first-info">
+      <mat-grid-list cols="2" rowHeight="2:1" >
+        <mat-grid-tile class="user-image">
+          <div class="image">
+            <img class="avatar huge" [src]="userInfo?.profile_piclink">
+          </div>
+        </mat-grid-tile>
+      <mat-grid-tile class="name">
+        <div class="name">
+          <form [formGroup]="profileForm">
+            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" placeholder="First Name" id="inputEmail4" formControlName="fname" readonly>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" placeholder="Last Name" id="inputEmail4" formControlName="lname" readonly>
+            </mat-form-field>
+          </form>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    </div>
+      <div class="second-info">
+        <form [formGroup]="profileForm">
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
+            <mat-label>Status</mat-label>
+            <input matInput type="text" placeholder="Account Type" id="inputEmail4" formControlName="status" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf="this.statusValue == 1 || this.statusValue == 2 || this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 7 ||this.statusValue == 8">
+            <mat-label>School Name Currently Studying</mat-label>
+            <input matInput type="text" placeholder="School Name Currently Studying" id="inputEmail4" formControlName="schoolname" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf="this.statusValue == 1 || this.statusValue == 2 || this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 7 ||this.statusValue == 8">
+            <mat-label>Elementary School Name</mat-label>
+            <input matInput type="text" placeholder="Elementary School Name" id="inputEmail4" formControlName="elemschool" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf="this.statusValue == 1 || this.statusValue == 2 || this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 7 || this.statusValue == 8 || this.statusValue == 9 ||this.statusValue == 10 || this.statusValue == 12">
+            <mat-label>Elementary School Address</mat-label>
+            <input matInput type="text" placeholder="Elementary School Address" id="inputEmail4" formControlName="elemaddress" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf="this.statusValue == 1 || this.statusValue == 2 || this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 7 || this.statusValue == 8 || this.statusValue == 9 || this.statusValue == 10 || this.statusValue == 12">
+            <mat-label>Junior High School Name</mat-label>
+            <input matInput type="text" placeholder="Junior High School Name" id="inputEmail4" formControlName="junschool" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 2 || this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 7 || this.statusValue == 8 || this.statusValue == 9 || this.statusValue == 10 || this.statusValue == 12">
+            <mat-label>Junior High School Address</mat-label>
+            <input matInput type="text" placeholder="Junior High School Address" id="inputEmail4" formControlName="junaddress" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 8 || this.statusValue == 9 || this.statusValue == 10">
+            <mat-label>Senior High School Name</mat-label>
+            <input matInput type="text" placeholder="Senior High School Name" id="inputEmail4" formControlName="shschoolname" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 8 || this.statusValue == 9 ||this.statusValue == 10">
+            <mat-label>Senior High School Address</mat-label>
+            <input matInput type="text" placeholder="Senior High School Address" id="inputEmail4" formControlName="elemschool" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 3 || this.statusValue == 4 || this.statusValue == 5 || this.statusValue == 6 || this.statusValue == 8 ||this.statusValue == 9 || this.statusValue == 10">
+            <mat-label>Senior High School Course</mat-label>
+            <input matInput type="text" placeholder="Senior High School Course" id="inputEmail4" formControlName="snhcourse" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 6 || this.statusValue == 7 || this.statusValue == 11">
+            <mat-label>TESDA Course</mat-label>
+            <input matInput type="text" placeholder="TESDA Course" id="inputEmail4" formControlName="tesdacourse" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 5 || this.statusValue == 9 || this.statusValue == 10">
+            <mat-label>College School Name</mat-label>
+            <input matInput type="text" placeholder="College School Name" id="inputEmail4" formControlName="collgeschoolname" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 5 || this.statusValue == 9 || this.statusValue == 10">
+            <mat-label>College School Address</mat-label>
+            <input matInput type="text" placeholder="College School Address" id="inputEmail4" formControlName="snhcourse" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 5 || this.statusValue == 9 || this.statusValue == 10">
+            <mat-label>College Course</mat-label>
+            <input matInput type="text" placeholder="College Course" id="inputEmail4" formControlName="collegecourse" readonly>
+          </mat-form-field>
+          <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true" *ngIf=" this.statusValue == 8 || this.statusValue == 10">
+            <mat-label>Work</mat-label>
+            <input matInput type="text" placeholder="Elementary School Name" id="inputEmail4" formControlName="work" readonly>
+          </mat-form-field>
+        </form>
+
+      </div>
+      <div class="footer">
+        <button mat-raised-button color="primary" (click)="approved(this.childId,1)" *ngIf="account_type == '4'">Aprroved</button>
+        <button mat-raised-button color="accent" class="actions" (click)="declined(this.childId,3)" *ngIf="account_type == '4'">Declined</button>
+        <button mat-raised-button color="warn" class="actions" (click)="closepopup()">Close</button>
+      </div>
+</body>
+

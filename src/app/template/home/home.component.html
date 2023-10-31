@@ -40,7 +40,13 @@
             <li class="nav-link" *ngIf="account_type === 1 || account_type === 2">
               <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/beneficiary">
                 <i class='bx bx-money-withdraw icon'></i>
-                <span class="text nav-text">Beneficiaries</span>
+                <span class="text nav-text">4ps Holder</span>
+              </a>
+            </li>
+            <li class="nav-link" *ngIf="account_type === 4">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/studentbeneficiary">
+                <i class='bx bx-money-withdraw icon'></i>
+                <span class="text nav-text">Student<br> Beneficiaries</span>
               </a>
             </li>
             <li class="nav-link" *ngIf="account_type === 1 || account_type === 2 || account_type === 3 || account_type ===4">

@@ -34,7 +34,7 @@ export class ProfileSettingComponent implements OnInit{
       lname : ['', [Validators.required]],
       mobile_number : ['', [Validators.required]],
       address : ['', [Validators.required]],
-      schoolName: [''],
+      schoolname: [''],
       profile_piclink: [''],
       password :['', [Validators.required]],
       newpassword: ['', [Validators.required]],
@@ -92,17 +92,25 @@ export class ProfileSettingComponent implements OnInit{
     if (userSessString !== null) {
       const parsed = JSON.parse(userSessString);
       this.accountuser_id = parsed.accountuser_id;
+
+      this.subscription.add(
+        this._dataService.get_user_profile(this.accountuser_id).subscribe((result) => {
+          this.profileInfo = result.result[0];
+          this.fileUrl = this.profileInfo.profile_piclink;
+
+          // Add the 'schoolname' to the existing user session data
+          parsed.schoolname = this.profileInfo.schoolname;
+
+          // Store the updated session data back in localStorage
+          localStorage.setItem('user_loginSession', JSON.stringify(parsed));
+
+          // Update your form with the new 'schoolname' value
+          this.profileForm.patchValue(this.profileInfo);
+        })
+      );
     }
-    this.subscription.add(
-      this._dataService.get_user_profile(this.accountuser_id).subscribe((result) => {
-        console.log(result);
-        this.profileInfo = result.result[0];
-        console.log(this.profileInfo)
-        this.fileUrl = this.profileInfo.profile_piclink;
-        this.profileForm.patchValue(this.profileInfo);
-      })
-    );
   }
+
 
   selectedFiles?: FileList;
   currentFile?: File;
@@ -184,6 +192,7 @@ export class ProfileSettingComponent implements OnInit{
   }
 
   update() {
+    console.log(this.profileForm.value);
     this._dataService.update_profile(this.profileForm.value).subscribe(
       async (result) => {
         if (result && result.status === '200') {

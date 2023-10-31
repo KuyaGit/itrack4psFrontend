@@ -35,8 +35,9 @@ import { UpdateinfoComponent } from 'src/app/shared/updateinfo/updateinfo.compon
 import { BeneficiaryregComponent } from 'src/app/shared/beneficiaryreg/beneficiaryreg.component';
 import { MatSortModule } from '@angular/material/sort';
 import { ChildbeneficiaryComponent } from 'src/app/shared/childbeneficiary/childbeneficiary.component';
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ViewchildComponent } from 'src/app/shared/beneficiary/viewchild/viewchild.component';
+import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
 
 
 @NgModule({
@@ -50,9 +51,9 @@ import { ChildbeneficiaryComponent } from 'src/app/shared/childbeneficiary/child
     InformationComponent,
     UpdateinfoComponent,
     BeneficiaryregComponent,
-    ChildbeneficiaryComponent
-
-
+    ChildbeneficiaryComponent,
+    ViewchildComponent,
+    SchoolregistrarComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +78,8 @@ import { ChildbeneficiaryComponent } from 'src/app/shared/childbeneficiary/child
     MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDatepickerModule
 
   ]
 })
