@@ -18,17 +18,21 @@ export interface accountdetails {
 }
 
 export interface child_beneficiary{
+  statusName: number;
+  statusText: string;
   child_id : number;
   accoundetails_id : number;
   schoolName : string;
   beneficiary_status : number;
-  fName: string;
-  lName: string;
+  fname: string;
+  lname: string;
   birthdate: string;
   snhcourse: string;
   collegecourse: string;
   other_status: string;
   profile_piclink: string;
+  status: number;
+
 }
 
 
@@ -87,3 +91,12 @@ export interface changepassword{
   newpassword : string;
 }
 
+export interface statusNames{
+  status : string;
+  value: number;
+}
+
+
+export interface barangayNames{
+  barangay : string;
+}

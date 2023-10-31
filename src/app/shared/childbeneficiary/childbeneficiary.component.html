@@ -1,0 +1,207 @@
+<h2 mat-dialog-title>Create Beneficiary Details</h2>
+    <mat-dialog-content class="mat-typography">
+        <mat-grid-list cols="1">
+          <form [formGroup]="childbeneficiary">
+            <div class="example-container">
+              <div class="upload-image">
+                <div class="form-group">
+                  <div class="form-group text-center" *ngIf="!imagePreview ">
+                    <img
+                      src="assets/default.png"
+                      class="rounded-circle img-thumbnail square-image"
+                      style="opacity: .4;"
+                    />
+                  </div>
+                  <div class="form-group text-center" *ngIf="imagePreview">
+                    <img
+                      (click)="fileInput.click()"
+                      [src]="imagePreview"
+                      class="rounded-circle img-thumbnail square-image"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="file"
+                    class="form-control input-image"
+                    accept="image/*"
+                    #fileInput
+                    (change)="selectFile($event)"
+                  />
+                </div>
+              </div>
+
+              <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="fname_var" required>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls.fname_var.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+                <mat-label>Surname</mat-label>
+                <input matInput formControlName="lname_var">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls.lname_var.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline" class="width-50" hideRequiredMarker="true">
+                <mat-label>Birthdate</mat-label>
+                <input matInput formControlName="birthdate_var"  [matDatepicker]="picker" required>
+                <mat-hint>MM/DD/YYYY</mat-hint><mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls.birthdate_var.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="width-50 ml-2" hideRequiredMarker="true">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status_var">
+                  <mat-option *ngFor="let item of status" [value]="item.value">
+                    {{item.status}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls.status_var.touched">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 1 || childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 ||childbeneficiary.controls.status_var.value == 8">
+                <mat-label>School Name currently studying</mat-label>
+                <mat-select formControlName="schoolname_var" >
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['schoolname_var'].errors?.touched || childbeneficiary.controls['schoolname_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 1 || childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 ||childbeneficiary.controls.status_var.value == 10 || childbeneficiary.controls.status_var.value == 12">
+                <mat-label>Elementary School Name</mat-label>
+                <mat-select formControlName="elemschool_var" >
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['elemschool_var'].errors?.touched || childbeneficiary.controls['elemschool_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 1 || childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10 || childbeneficiary.controls.status_var.value == 12">
+                <mat-label>Elementary School Address</mat-label>
+                <mat-select formControlName="elemaddress_var" >
+                  <mat-option *ngFor="let item of barangay" [value]="item.barangay">
+                    {{item.barangay}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['elemaddress_var'].errors?.touched || childbeneficiary.controls['elemaddress_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10 || childbeneficiary.controls.status_var.value == 12">
+                <mat-label>Junior High School Name</mat-label>
+                <mat-select formControlName="junschool_var" >
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['junschool_var'].errors?.touched || childbeneficiary.controls['junschool_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10 || childbeneficiary.controls.status_var.value == 12">
+                <mat-label>Junior High School Address</mat-label>
+                <mat-select formControlName="junaddress_var" >
+                  <mat-option *ngFor="let item of barangay" [value]="item.barangay">
+                    {{item.barangay}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['junaddress_var'].errors?.touched || childbeneficiary.controls['junaddress_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>Senior High School Name</mat-label>
+                <mat-select formControlName="shschoolname_var" >
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['shschoolname_var'].errors?.touched || childbeneficiary.controls['shschoolname_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 9 ||childbeneficiary.controls.status_var.value == 10">
+                <mat-label>Senior High School Address</mat-label>
+                <mat-select formControlName="scschooladdress_var" >
+                  <mat-option *ngFor="let item of barangay" [value]="item.barangay">
+                    {{item.barangay}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['scschooladdress_var'].errors?.touched || childbeneficiary.controls['scschooladdress_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 8 ||childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>Senior High School Course</mat-label>
+                <input matInput type="text" formControlName="snhcourse_var" placeholder="Course">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['snhcourse_var'].errors?.touched || childbeneficiary.controls['snhcourse_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7 || childbeneficiary.controls.status_var.value == 11">
+                <mat-label>TESDA Course</mat-label>
+                <input matInput type="text" formControlName="tesdacourse_var" placeholder="Course">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['tesdacourse_var'].errors?.touched || childbeneficiary.controls['tesdacourse_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>College School Name</mat-label>
+                <mat-select formControlName="collegeschoolname_var" >
+                  <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
+                    {{item.schoolName}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['collegeschoolname_var'].errors?.touched || childbeneficiary.controls['collegeschoolname_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>College School Address</mat-label>
+                <mat-select formControlName="collegeaddress_var" >
+                  <mat-option *ngFor="let item of barangay" [value]="item.barangay">
+                    {{item.barangay}}
+                  </mat-option>
+                </mat-select>
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['collegeaddress_var'].errors?.touched || childbeneficiary.controls['collegeaddress_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 9 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>College Course</mat-label>
+                <input matInput type="text" formControlName="collegecourse_var" placeholder="Course">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['collegecourse_var'].errors?.touched || childbeneficiary.controls['collegecourse_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 10">
+                <mat-label>Work</mat-label>
+                <input matInput type="text" formControlName="work_var" placeholder="Work">
+                <mat-error class="error-message">
+                  <span *ngIf="childbeneficiary.controls['work_var'].errors?.touched || childbeneficiary.controls['work_var'].errors?.required">This field is required.</span>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </form>
+        </mat-grid-list>
+        <div mat-dialog-actions align="end" class="bottom-buttons">
+          <button mat-button mat-dialog-close>Cancel</button>
+          <button mat-fab extended color="primary" [mat-dialog-close]="true" (click)="addbeneficiariesSubscription()" [disabled]="!childbeneficiary.valid" >Add User</button>
+          </div>
+      </mat-dialog-content>

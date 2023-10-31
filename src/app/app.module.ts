@@ -23,12 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-
-
+    
   ],
   imports: [
     BrowserModule,

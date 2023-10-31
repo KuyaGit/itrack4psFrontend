@@ -13,7 +13,6 @@ export class SessionService {
 	isAlertOnceOnTokenExpire: boolean = false;
 	acccountuser_id: number = 0;
 	account_type: number = 0;
-
   navbarVisibilityChange: Subject<boolean> = new Subject<boolean>();
 	isUserLoggedInStatus: Subject<boolean> = new Subject<boolean>();
 

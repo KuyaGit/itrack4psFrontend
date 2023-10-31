@@ -236,11 +236,11 @@ export class UpdateinfoComponent implements OnInit{
     this._dataService.update_profile(this.profileForm.value).subscribe(
       async (result) => {
         if (result && result.status === '200') {
-          this.handleSuccess('Profile updated');
+          this.handleSuccess('Beneficiary Profile Created');
           this.upload()
           await this.getProfileData();
         } else {
-          this.handleError('Failed to update profile');
+          this.handleError('Failed to Create Beneficiary profile');
         }
       },
       (error) => {

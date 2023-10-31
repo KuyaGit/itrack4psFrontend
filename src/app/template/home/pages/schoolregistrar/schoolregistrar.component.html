@@ -1,0 +1,44 @@
+<body>
+  <!-- <div class="container"> -->
+    <div class="header">
+      <header>Student Beneficiaries</header>
+    </div>
+
+    <div class="table-container">
+      <table mat-table [dataSource]="allStudentBeneficiary" matSort>
+        <!-- header row -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+        <!-- column -->
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <ng-container matColumnDef="child_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Child ID </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.child_id }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.fname }} {{ item.lname }}
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let item">
+            {{ item.status }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef > Action </th>
+        <td mat-cell *matCellDef="let item">
+              <button mat-raised-button color="primary" (click)="viewItem(item.child_id)">
+                View
+              </button>
+        </td>
+    </ng-container>
+      </table>
+    <mat-paginator class="mat-paginator-sticky" #paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10"
+                [length]="allStudentBeneficiary.data.length"></mat-paginator>
+  </div>
+</body>

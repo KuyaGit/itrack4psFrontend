@@ -62,6 +62,9 @@ export class SchoolService {
     },
     {
       schoolName: 'Malimatoc Elementary School'
+    },
+    {
+      schoolName: 'Batangas State University - TNEU Mabini Campus'
     }
   ];
 

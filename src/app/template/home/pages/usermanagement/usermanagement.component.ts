@@ -86,7 +86,7 @@ export class UsermanagementComponent implements OnInit{
 
   viewItemDialog(accountuser_id: number, title: string, component: any) {
     var _popup = this.dialog.open(component, {
-      width: '50%',
+      width: '80%',
       data: {
         title: title,
         code: accountuser_id
@@ -179,7 +179,7 @@ export class UsermanagementComponent implements OnInit{
   }
 
 
-  // Make Form School Name required when account type 3 is selected
+  // Make Form School Name required when account type 4 is selected
   schoolnamerequired(value: string) {
     // This function will change the validators for the schoolName field
     const account_type = this.createaccountForm.get('account_type');

@@ -30,11 +30,11 @@
                   </mat-form-field>
                   <mat-form-field class="full-width">
                     <mat-label>Mobile Number</mat-label>
-                    <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="mobile_number">
+                    <input matInput type="text" placeholder="Mobile Number" id="inputAddress" formControlName="mobile_number">
                   </mat-form-field>
                   <mat-form-field class="full-width" *ngIf="account_type === 4">
-                    <mat-label>Mobile Number</mat-label>
-                    <input matInput type="text" placeholder="Address" id="inputAddress" formControlName="mobile_number">
+                    <mat-label>School Name</mat-label>
+                    <input matInput type="text" placeholder="School Name"  formControlName="schoolname">
                   </mat-form-field>
                   <div class="center" *ngIf="!imagePreview">
                       <img [src]="fileUrl" alt="Photo" (click)="fileInput.click()" class="profile-photo">
@@ -45,7 +45,7 @@
                     <img [src]="imagePreview" alt="Photo" (click)="fileInput.click()" class="profile-photo">
                     <i class='bx bxs-camera' ></i>
                     <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
-                </div>
+                  </div>
                 </form>
                 </div>
                 <button (click)="update()" mat-raised-button class="mat-primary large-button" type="submit">Save changes</button>
