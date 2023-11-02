@@ -52,29 +52,6 @@ export class RegisterComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.sign_in_btn = document.querySelector("#sign-in-btn") as HTMLElement;
-    this.sign_up_btn = document.querySelector("#sign-up-btn") as HTMLElement;
-    this.container = document.querySelector(".container") as HTMLElement;
-    this.sign_in_btn2 = document.querySelector("#sign-in-btn2") as HTMLElement;
-    this.sign_up_btn2 = document.querySelector("#sign-up-btn2") as HTMLElement;
-
-    this.sign_up_btn.addEventListener("click", () => {
-      this.container.classList.add("sign-up-mode");
-    });
-
-    this.sign_in_btn.addEventListener("click", () => {
-      this.container.classList.remove("sign-up-mode");
-    });
-
-    this.sign_up_btn2.addEventListener("click", () => {
-      this.container.classList.add("sign-up-mode2");
-    });
-
-    this.sign_in_btn2.addEventListener("click", () => {
-      this.container.classList.remove("sign-up-mode2");
-    });
-
-    this.container.classList.add("sign-up-mode");
   }
 
   login() {
@@ -139,7 +116,7 @@ export class RegisterComponent implements OnInit{
           'Success',
           response.message,
           () => {
-            // this.router.navigate(['/']);
+            this.router.navigate(['/']);
           }
         );
         this.registrationForm.reset();

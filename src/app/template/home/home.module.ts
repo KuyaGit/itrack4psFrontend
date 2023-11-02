@@ -38,6 +38,7 @@ import { ChildbeneficiaryComponent } from 'src/app/shared/childbeneficiary/child
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ViewchildComponent } from 'src/app/shared/beneficiary/viewchild/viewchild.component';
 import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -79,8 +80,8 @@ import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistra
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDatepickerModule
-
+    MatDatepickerModule,
+    NgChartsModule
   ]
 })
 export class HomeModule {

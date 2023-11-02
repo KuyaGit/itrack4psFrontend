@@ -8,7 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
+
 
 import { HomeModule } from './template/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -29,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     RegisterComponent,
-    
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,11 +47,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatIconModule,
     FontAwesomeModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

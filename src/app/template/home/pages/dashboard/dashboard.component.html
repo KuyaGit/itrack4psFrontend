@@ -1,26 +1,123 @@
 <body>
+  <header>Dashboard</header>
+  <!-- Numbers -->
   <div class="grid-container">
-    <h1 class="mat-h1">Dashboard</h1>
-    <mat-grid-list cols="2" rowHeight="350px">
-      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              {{card.title}}
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Expand</button>
-                <button mat-menu-item>Remove</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <div>Card Content Here</div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <div id="root">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="c-dashboardInfo col-lg-3 col-md-6">
+            <div class="wrap">
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">4Ps Holder<svg
+                  class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                  </path>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">50,858</span>
+            </div>
+          </div>
+          <div class="c-dashboardInfo col-lg-3 col-md-6">
+            <div class="wrap">
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">4Ps Holder<svg
+                  class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                  </path>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€500</span>
+            </div>
+          </div>
+          <div class="c-dashboardInfo col-lg-3 col-md-6">
+            <div class="wrap">
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Senior Highschool Graduates<svg
+                  class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                  </path>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€5000</span>
+            </div>
+          </div>
+          <div class="c-dashboardInfo col-lg-3 col-md-6">
+            <div class="wrap">
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental return<svg
+                  class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+                  <path fill="none" d="M0 0h24v24H0z"></path>
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
+                  </path>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">6,40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="charts">
+    <mat-card class="bar">
+      <mat-card-title>
+        Graduates Currently Working
+      </mat-card-title>
+      <mat-card-content>
+        <div class="chart-container">
+          <div class="chart">
+            <canvas
+  baseChart
+  class="chart"
+  [data]="barChartData"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [type]="barChartType"
+  (chartHover)="chartHovered($event)"
+  (chartClick)="chartClicked($event)"
+>
+</canvas>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="pie">
+      <mat-card-title>Beneficiary Students Continue Studying College</mat-card-title>
+      <mat-card-content>
+        <div class="chart-container">
+          <div class="chart">
+            <canvas
+              baseChart
+              class="chart"
+              [data]="pieChartData"
+              [type]="pieChartType"
+              [options]="pieChartOptions"
+              [plugins]="pieChartPlugins"
+            >
+            </canvas>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="full-with">
+    <mat-card class="line">
+      <mat-card-title>
+        Number's Status of every Beneficiaries
+      </mat-card-title>
+      <mat-card-content>
+        <div class="chart-container">
+          <div class="chart">
+            <canvas
+              baseChart
+              class="chart"
+              [data]="barChartData"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"
+            >
+            </canvas>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
 </body>
