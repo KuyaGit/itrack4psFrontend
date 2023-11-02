@@ -3,16 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './template/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
 const routes: Routes = [
   {
     path: 'login',
-    component: RegisterComponent,
+    component: LoginComponent,
     title: 'Login'
   },
-
+  {
+    path: 'register',
+    component: RegisterComponent,
+    title: 'Register'
+  },
   {
     path: '',
     redirectTo: '/login',

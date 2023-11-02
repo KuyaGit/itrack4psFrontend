@@ -1,0 +1,26 @@
+<body>
+  <div class="container">
+    <div class="signin-signup">
+      <form action="" class="sign-in-form" [formGroup]="loginForm">
+          <h2 class="title">LOGIN</h2>
+          <div class="input-field">
+              <i class='bx bxs-envelope' style="font-size: 2em;"></i>
+              <input type="text" placeholder="Email" formControlName="email">
+          </div>
+          <div class="input-field">
+              <i class='bx bxs-lock-alt' style="font-size: 2em;"></i>
+              <input type="password" placeholder="Password" formControlName="password">
+          </div>
+          <input type="submit" value="Login" class="btn" (click)="login()">
+      </form>
+    </div>
+    <div class="panel right-panel">
+      <div class="content">
+              <h3>Create an Account</h3>
+              <p>Just a simple step you can create and update your account.</p>
+              <button class="btn" id="sign-up-btn" routerLink="/register" >Sign up</button>
+      </div>
+          <img src="assets/login/Itrack4ps.png" alt="" class="image">
+    </div>
+  </div>
+</body>
