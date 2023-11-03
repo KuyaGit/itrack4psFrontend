@@ -1,8 +1,9 @@
 body{
   background: var(--body-color);
-  height: 100vh;
+  height: 90vh;
   padding-top: 2% !important;
   padding:  3%;
+  overflow: auto;
 }
 header{
   font-size: 20px;

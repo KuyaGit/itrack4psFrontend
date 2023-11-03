@@ -1,9 +1,10 @@
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { map } from 'rxjs/operators';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+import { AnalyticsService } from 'src/app/services/analytics.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,19 +12,106 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   private breakpointObserver = inject(BreakpointObserver);
+
+  private subs_get_4psholder: Subscription = new Subscription();
+  constructor(
+    private _analytics: AnalyticsService
+  ) { }
+  ngOnInit(): void {
+  this.getallStatuscount()
+  this.get4psholderS()
+  this.getStatus4()
+  this.get4psholderS()
+  this.getallworking()
+}
+FourpsHolder:any = []
+get4psholderS() {
+  this.subs_get_4psholder.add(
+    this._analytics.analytics_get4psholder()
+    .subscribe(
+      (result) => {
+        this.FourpsHolder = result.result[0];
+      }
+    )
+  )
+}
+status4 : any = []
+getStatus4() {
+  this.subs_get_4psholder.add(
+    this._analytics.analytics_status4()
+    .subscribe(
+      (result) => {
+        this.status4 = result.result[0];
+      }
+    )
+  )
+}
+
+allstatusCount : any = []
+getallStatuscount() {
+  this.subs_get_4psholder.add(
+    this._analytics.allstatuscount()
+    .subscribe(
+      (result) => {
+        this.allstatusCount = result.result[0].analytics_allstatuscount;
+        console.log(this.allstatusCount)
+      }
+    )
+  )
+}
+
+allworking: any = [];
+senior!: number;
+junior!: number;
+college!: number;
+
+
+chartdata : any = []
+getallworking() {
+  this.subs_get_4psholder.add(
+    this._analytics.allworking().subscribe((result) => {
+      this.allworking = result.result;
+      this.senior = parseInt(this.allworking[0].count_8);
+      this.junior = parseInt(this.allworking[0].count_12);
+      this.college = parseInt(this.allworking[0].count_10);
+      console.log(this.senior, this.college, this.junior);
+
+      // Update the barChartData dataset with the received data
+      this.allworkingdata.datasets[0].data = [this.junior, this.senior, this.college];
+    })
+  );
+}
+public allworkingdata: ChartData<'bar'> = {
+  labels: ['Junior Highschool Graduate', 'Senior Highschool Graduate',  'College Graduate'],
+  datasets: [
+    {
+      data: [],
+      label: 'Beneficiaries Currently Working',
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+
+
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   /** Based on the screen size, switch from standard to one column per row */
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
 
-    // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
       y: {
-        min: 10,
-      },
+        min: 1,
+        max: 10
+      }
     },
     plugins: {
       legend: {
@@ -38,13 +126,7 @@ export class DashboardComponent {
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [DataLabelsPlugin];
 
-  public barChartData: ChartData<'bar'> = {
-    labels: ['2006', '2007', '2008', '2009', '2010', '2011', '2012'],
-    datasets: [
-      { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-      { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-    ],
-  };
+
 
   // events
   public chartClicked({
@@ -67,20 +149,6 @@ export class DashboardComponent {
     console.log(event, active);
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40,
-    ];
-
-    this.chart?.update();
-  }
   public pieChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     plugins: {
@@ -98,10 +166,10 @@ export class DashboardComponent {
     },
   };
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'],
+    labels: ['Download', 'Sales'],
     datasets: [
       {
-        data: [300, 500, 100],
+        data: [5, this.allstatusCount],
       },
     ],
   };

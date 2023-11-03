@@ -45,7 +45,7 @@ export class ChildbeneficiaryComponent implements OnInit {
       birthdate_var: ['',Validators.required],
       snhcourse_var: ['',Validators.required],
       collegecourse_var: ['',Validators.required],
-      profile_piclink_var: ['',Validators.required],
+      profile_piclink: ['',Validators.required],
       collegeschoolname_var: ['',Validators.required],
       collegeaddress_var: ['',Validators.required],
       status_var: ['',Validators.required],
@@ -84,10 +84,10 @@ export class ChildbeneficiaryComponent implements OnInit {
     this._dataService.addchildbeneficiary(formData).subscribe(
       async (result) => {
         if (result && result.status === '200') {
-          this.handleSuccess('Profile updated');
+          this.handleSuccess('Beneficiary added successfully');
           this.upload()
         } else {
-          this.handleError('Failed to update profile');
+          this.handleError('Failed to add beneficiary information');
         }
       },
       (error) => {
@@ -287,8 +287,9 @@ export class ChildbeneficiaryComponent implements OnInit {
         });
         }
         else if( status?.value == 8){
-          const fieldsToUpdate = ['schoolname_var', 'elemschool_var', 'elemaddress_var','junschool_var','junaddress_var', 'snhcourse_var','shschoolname_var', 'scschooladdress_var', 'work_var'];
+          const fieldsToUpdate = ['elemschool_var', 'elemaddress_var','junschool_var','junaddress_var', 'snhcourse_var','shschoolname_var', 'scschooladdress_var', 'work_var'];
           const fieldsToClearValidators = [
+            'schoolname_var',
             'collegeschoolname_var',
             'collegeaddress_var',
             'collegecourse_var',
@@ -509,7 +510,7 @@ export class ChildbeneficiaryComponent implements OnInit {
 
           if (width === height) { // Square (2x2 pixels)
             this.selectedFileName = file.name;
-            this.childbeneficiary.get('profile_piclink_var')?.setValue(this.selectedFileName);
+            this.childbeneficiary.get('profile_piclink')?.setValue(this.selectedFileName);
 
             // Display a preview of the selected image
             this.previewImage(file);
