@@ -7,7 +7,7 @@
         <div class="row align-items-stretch">
           <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">4Ps Holder<svg
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Mabini Population<svg
                   class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path
@@ -24,7 +24,7 @@
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
-                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€500</span>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{this.FourpsHolder.analytics_4psholder}}</span>
             </div>
           </div>
           <div class="c-dashboardInfo col-lg-3 col-md-6">
@@ -35,18 +35,18 @@
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
-                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">€5000</span>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{this.status4.analytics_status4}}</span>
             </div>
           </div>
           <div class="c-dashboardInfo col-lg-3 col-md-6">
             <div class="wrap">
-              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Rental return<svg
+              <h4 class="heading heading5 hind-font medium-font-weight c-dashboardInfo__title">Beneficiaries<svg
                   class="MuiSvgIcon-root-19" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
                   <path fill="none" d="M0 0h24v24H0z"></path>
                   <path
                     d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                   </path>
-                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">6,40%</span>
+                </svg></h4><span class="hind-font caption-12 c-dashboardInfo__count">{{this.allstatusCount}}</span>
             </div>
           </div>
         </div>
@@ -62,16 +62,16 @@
         <div class="chart-container">
           <div class="chart">
             <canvas
-  baseChart
-  class="chart"
-  [data]="barChartData"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [type]="barChartType"
-  (chartHover)="chartHovered($event)"
-  (chartClick)="chartClicked($event)"
->
-</canvas>
+              baseChart
+              class="chart"
+              [data]="allworkingdata"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"
+              >
+            </canvas>
           </div>
         </div>
       </mat-card-content>
@@ -106,7 +106,7 @@
             <canvas
               baseChart
               class="chart"
-              [data]="barChartData"
+              [data]="allworkingdata"
               [options]="barChartOptions"
               [plugins]="barChartPlugins"
               [type]="barChartType"

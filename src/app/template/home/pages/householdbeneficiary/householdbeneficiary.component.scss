@@ -3,6 +3,7 @@ body{
   height: 100vh;
   padding-top: 2% !important;
   padding:  3%;
+  overflow: auto;
 }
 .header{
   font-size: 30px;
@@ -68,11 +69,12 @@ mat-label{
 
 .example-card{
   width: 22%;
+  margin-top: 1%;
 }
 
 .h-beneficiary{
   display: flex;
-  flex: no-wrap;
+  flex-wrap: wrap;
 }
 
 mat-card

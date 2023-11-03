@@ -81,7 +81,8 @@ import { NgChartsModule } from 'ng2-charts';
     MatPaginatorModule,
     MatSortModule,
     MatDatepickerModule,
-    NgChartsModule
+    NgChartsModule,
+
   ]
 })
 export class HomeModule {
