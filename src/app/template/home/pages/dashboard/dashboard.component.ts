@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit{
   ) { }
   ngOnInit(): void {
   this.getallStatuscount()
+  this.getStatus5()
   this.get4psholderS()
   this.getStatus4()
   this.get4psholderS()
@@ -49,18 +50,46 @@ getStatus4() {
   )
 }
 
-allstatusCount : any = []
+allstatusCount : any = [];
+beneficiaries : any = [];
 getallStatuscount() {
   this.subs_get_4psholder.add(
     this._analytics.allstatuscount()
     .subscribe(
       (result) => {
         this.allstatusCount = result.result[0].analytics_allstatuscount;
-        console.log(this.allstatusCount)
+        this.beneficiaries = parseInt(this.allstatusCount)
+      }
+    )
+
+  )
+}
+
+status5: any = []
+status5parse: any = []
+getStatus5() {
+  this.subs_get_4psholder.add(
+    this._analytics.status5()
+    .subscribe(
+      (result) => {
+            this.status5 = result.result[0].analytics_status5;
+            this.status5parse = parseInt(this.status5);
+            console.log(this.status5parse)
+            this.generatePie()
       }
     )
   )
+
 }
+
+
+generatePie() {
+  const sh = this.status5parse;
+  const benef = this.beneficiaries;
+  this.pieChartData.datasets[0].data = [sh, benef]
+  console.log(this.pieChartData)
+}
+
 
 allworking: any = [];
 senior!: number;
@@ -77,12 +106,12 @@ getallworking() {
       this.junior = parseInt(this.allworking[0].count_12);
       this.college = parseInt(this.allworking[0].count_10);
       console.log(this.senior, this.college, this.junior);
-
       // Update the barChartData dataset with the received data
       this.allworkingdata.datasets[0].data = [this.junior, this.senior, this.college];
     })
   );
 }
+
 public allworkingdata: ChartData<'bar'> = {
   labels: ['Junior Highschool Graduate', 'Senior Highschool Graduate',  'College Graduate'],
   datasets: [
@@ -123,6 +152,7 @@ public allworkingdata: ChartData<'bar'> = {
       },
     },
   };
+
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [DataLabelsPlugin];
 
@@ -166,10 +196,10 @@ public allworkingdata: ChartData<'bar'> = {
     },
   };
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['Download', 'Sales'],
+    labels: ['Continue College', 'Beneficiaries'],
     datasets: [
       {
-        data: [5, this.allstatusCount],
+        data: [],
       },
     ],
   };

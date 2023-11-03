@@ -33,6 +33,11 @@ export class AnalyticsService {
     return this.http.get(this.url + '/api/admin/analytics/allworking')
   .pipe(catchError(this.handleError));;
   }
+  public status5(): Observable<any>{
+    return this.http.get(this.url + '/api/admin/analytics/status5')
+  .pipe(catchError(this.handleError));;
+  }
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
