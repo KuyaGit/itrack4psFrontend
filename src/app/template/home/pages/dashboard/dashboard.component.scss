@@ -156,3 +156,18 @@ mat-card-content{
 .full-with{
   padding: 2.4%;
 }
+
+.table-container{
+  margin-top: 1%;
+  height: 70%;
+  max-width: 100%;
+  overflow: auto;
+}
+.table {
+  overflow: hidden;
+}
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+}
