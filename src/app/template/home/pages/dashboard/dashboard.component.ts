@@ -86,7 +86,7 @@ getallstatussum() {
     this._analytics.allstatussum().subscribe(
       (result) => {
         this.allstatusSum = result.result[0];
-        this.countValues = Object.values(this.allstatusSum);
+        this.countValues = Object.values(this.allstatusSum); //convert object into array
         this.renderLineChart()
         if (this.linechart) {
           console.log(this.countValues)
