@@ -38,6 +38,12 @@ export class AnalyticsService {
   .pipe(catchError(this.handleError));;
   }
 
+  public allstatussum(): Observable<any>{
+    return this.http.get(this.url + '/api/admin/analytics/allstatussum')
+  .pipe(catchError(this.handleError));;
+  }
+
+
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
