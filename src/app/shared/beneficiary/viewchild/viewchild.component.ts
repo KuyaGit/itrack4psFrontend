@@ -49,7 +49,7 @@ export class ViewchildComponent {
       junschool: [''],
       junaddress: [''],
       shschoolname: [''],
-      scschooladdress: [''],
+      shschooladdress: [''],
       tesdacourse: [''],
       work: ['']
     });
@@ -68,13 +68,14 @@ export class ViewchildComponent {
         this.statusValue = this.userInfo.status;
         this.childId = this.userInfo.child_id;
         this.beneStatus = this.userInfo.beneficiary_status;
+        console.log(this.userInfo)
         if (typeof this.userInfo.status === 'number') {
           console.log(this.userInfo.status)
           this.userInfo.status = Number(this.userInfo.status);
           this.userInfo.status = this.getStatusType(this.userInfo.status);
         }
         this.profileForm.patchValue(this.userInfo);
-        console.log(this.profileForm.status)
+
       })
     );
   }

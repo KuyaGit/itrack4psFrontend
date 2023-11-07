@@ -57,12 +57,10 @@ export class HouseholdbeneficiaryComponent implements OnInit {
   subscription: Subscription = new Subscription();
   user!: any;
   getChildsData() {
-    console.log("getChildsData")
     this.subscription.add(
       this._dataService.getbeneficiary(this.accountuser_id).subscribe(
         (result) => {
             this.dataInfo = result.results.data;
-            console.log(this.dataInfo)
         },
         (error) => {
           console.log(error);
@@ -169,10 +167,7 @@ export class HouseholdbeneficiaryComponent implements OnInit {
           }
         );
       },
-      () => {
-        //cancel
-        console.log('Action canceled.');
-      }
+
     );
   }
   private handleError(message: string) {

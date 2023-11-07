@@ -69,7 +69,7 @@
                 </mat-error>
               </mat-form-field>
               <br>
-              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 1 || childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 4 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7">
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf="childbeneficiary.controls.status_var.value == 1 || childbeneficiary.controls.status_var.value == 2 || childbeneficiary.controls.status_var.value == 3 || childbeneficiary.controls.status_var.value == 5 || childbeneficiary.controls.status_var.value == 6 || childbeneficiary.controls.status_var.value == 7">
                 <mat-label>School Name currently studying</mat-label>
                 <mat-select formControlName="schoolname_var" >
                   <mat-option *ngFor="let item of schoolnames" [value]="item.schoolName">
@@ -190,7 +190,7 @@
                   <span *ngIf="childbeneficiary.controls['collegecourse_var'].errors?.touched || childbeneficiary.controls['collegecourse_var'].errors?.required">This field is required.</span>
                 </mat-error>
               </mat-form-field>
-              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 10">
+              <mat-form-field appearance="outline" class="width-100" hideRequiredMarker="true" *ngIf=" childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 10 || childbeneficiary.controls.status_var.value == 8 || childbeneficiary.controls.status_var.value == 12">
                 <mat-label>Work</mat-label>
                 <input matInput type="text" formControlName="work_var" placeholder="Work">
                 <mat-error class="error-message">
