@@ -191,8 +191,9 @@ export class ChildbeneficiaryComponent implements OnInit {
     }
     else if( status?.value == 4){
     const fieldsToUpdate = [
-      'schoolname_var', 'elemschool_var', 'elemaddress_var','junschool_var','junaddress_var', 'snhcourse_var','shschoolname_var', 'scschooladdress_var',];
+      'elemschool_var', 'elemaddress_var','junschool_var','junaddress_var', 'snhcourse_var','shschoolname_var', 'scschooladdress_var',];
     const fieldsToClearValidators = [
+      'schoolname_var',
       'collegeschoolname_var',
       'collegeaddress_var',
       'collegecourse_var',
