@@ -10,6 +10,7 @@ import { UsermanagementComponent } from './pages/usermanagement/usermanagement.c
 import { HouseholdbeneficiaryComponent } from './pages/householdbeneficiary/householdbeneficiary.component';
 import { AuthGuard } from 'src/app/guard/auth.guard';
 import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
+import { SchoolaccountsComponent } from './pages/schoolaccounts/schoolaccounts.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
         path: 'studentbeneficiary',
         title: 'Student Beneficiary',
         component: SchoolregistrarComponent
+      },
+      {
+        path: 'schoolaccounts',
+        title: 'School Registrar Account Management',
+        component: SchoolaccountsComponent
       }
     ]
   },

@@ -134,7 +134,7 @@
 
 
 <body>
-  <!-- <div class="container"> -->
+  <div class="container">
     <div class="header">
       <header>User Management</header>
         <button mat-raised-button extended color="primary" class="add-button" (click)="openDialog(createaccountModal)">
@@ -146,6 +146,11 @@
           Add Beneficiary
       </button>
     </div>
+    <mat-form-field appearance="outline" class="search">
+      <mat-label>Search User</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search User" #input>
+    </mat-form-field>
+  </div>
     <div class="table-container">
       <table mat-table [dataSource]="alluserData" matSort>
         <!-- header row -->

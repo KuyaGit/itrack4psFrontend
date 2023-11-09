@@ -109,7 +109,7 @@ renderPieChart() {
       labels: ['Continue College', 'Beneficiaries'],
       datasets: [{
         label: 'Number of Beneficiaries',
-        data: [this.beneficiaries, this.status5parse],
+        data: [this.status5parse,this.beneficiaries],
         borderWidth: 1,
         hoverOffset: 4
       }]

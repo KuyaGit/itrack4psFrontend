@@ -72,6 +72,9 @@ export class BeneficiaryFormComponent implements OnInit{
       this.getAllbeneficiary();
     })
   }
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.alluserData.filter = filterValue.trim().toLowerCase();
+}
 
 }

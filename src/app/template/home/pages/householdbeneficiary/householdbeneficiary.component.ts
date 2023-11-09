@@ -83,6 +83,7 @@ export class HouseholdbeneficiaryComponent implements OnInit {
         title: title,
         code: child_id
       }
+      
     });
     _popup.afterClosed().subscribe(item => {
       this.getChildsData();
@@ -175,6 +176,7 @@ export class HouseholdbeneficiaryComponent implements OnInit {
       }
     );
   }
+  
   private handleError(message: string) {
     this._alertService.simpleAlert('error', 'Error', message);
   }

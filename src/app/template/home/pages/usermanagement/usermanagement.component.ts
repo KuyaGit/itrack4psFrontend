@@ -155,6 +155,11 @@ export class UsermanagementComponent implements OnInit{
     );
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.alluserData.filter = filterValue.trim().toLowerCase();
+}
+
   ngOnInit() {
     this.getallUser();
     this.schoolnames = this._schoolname.getSchoolNames()

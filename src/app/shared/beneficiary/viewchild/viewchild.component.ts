@@ -175,6 +175,7 @@ export class ViewchildComponent {
           (result) => {
             if (result && result.status === '200') {
               this.handleSuccess('Student Beneficiary Approved');
+              this.closepopup()
             } else {
               this.handleError('Failed to Approved Student');
             }
@@ -203,6 +204,7 @@ export class ViewchildComponent {
           (result) => {
             if (result && result.status === '200') {
               this.handleSuccess('Student Beneficiary Declined');
+              this.closepopup()
             } else {
               this.handleError('Failed to Decline Student');
             }

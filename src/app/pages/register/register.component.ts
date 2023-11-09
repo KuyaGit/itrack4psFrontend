@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit{
       householdNumber: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      account_type: 3,
       profile_piclink: 'https://itrack4ps.s3.ap-southeast-2.amazonaws.com/default.png'
     });
     this.loginForm = this.formBuilder.group({
@@ -54,55 +53,9 @@ export class RegisterComponent implements OnInit{
   ngOnInit() {
   }
 
-  login() {
-
-    this.loginSubscription.add(
-      this._loginService
-        .login(
-          this.loginForm.value.email,
-          this.loginForm.value.password
-        )
-        .subscribe(
-          (result) => {
-            if (result['status'] == 200) {
-              if (result['results']) {
-                this._sessionService.setToken(
-                  JSON.stringify({
-                    accountuser_id: result['results']['accountuser_id'],
-                    account_type: result['results']['account_type'],
-                    authorizationToken: result['results']['authorizationToken'],
-                  })
-                );
-                this._alertService.simpleAlert(
-                  'success',
-                  'Success',
-                  'Login Successful'
-                );
-                this.router.navigate(['/home/profilesetting']);
-              } else {
-                this._alertService.simpleAlert(
-                  'error',
-                  'Invalid Account',
-                  'Invalid Account'
-                );
-              }
-            }
-          },
-          (error) => {
-            console.log(error);
-            this._alertService.simpleAlert(
-              'error',
-              'Error',
-              'Invalid Credentials'
-            );
-          }
-        )
-    );
-  }
-
+  
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe();
-    this.loginForm.reset();
+    
   }
 
 

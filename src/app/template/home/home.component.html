@@ -49,16 +49,22 @@
                 <span class="text nav-text">Student<br> Beneficiaries</span>
               </a>
             </li>
-            <li class="nav-link" *ngIf="account_type === 1 || account_type === 2 || account_type === 3 || account_type ===4">
-              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/profilesetting">
-                <i class='bx bx-cog icon'></i>
-                <span class="text nav-text">Profile Settings</span>
+            <li class="nav-link" *ngIf="account_type === 1 && 2">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/schoolaccounts">
+                <i class='bx bxs-school icon'></i>
+                <span class="text nav-text">School Account <br> Management</span>
               </a>
             </li>
             <li class="nav-link" *ngIf="account_type === 1">
               <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/usermanagement">
                 <i class='bx bx-user-circle icon'></i>
                 <span class="text nav-text">User Management</span>
+              </a>
+            </li>
+            <li class="nav-link" *ngIf="account_type === 1 || account_type === 2 || account_type === 3 || account_type ===4">
+              <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/home/profilesetting">
+                <i class='bx bx-cog icon'></i>
+                <span class="text nav-text">Profile Settings</span>
               </a>
             </li>
           </ul>

@@ -2,6 +2,13 @@
   <!-- <div class="container"> -->
     <div class="header">
       <header>Student Beneficiaries</header>
+      <mat-form-field appearance="outline" class="search">
+        <mat-label>Search Student</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Student" #input>
+      </mat-form-field>
+    </div>
+    <div class="header">
+      
     </div>
 
     <div class="table-container">

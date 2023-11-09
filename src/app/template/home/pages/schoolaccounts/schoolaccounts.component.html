@@ -1,0 +1,48 @@
+<body>
+    <!-- <div class="container"> -->
+        <div class="header">
+            <header>School Registrars Accounts</header>
+            <mat-form-field appearance="outline" class="search">
+                <mat-label>Search School Registrars Account</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Search School Registrars Account" #input>
+            </mat-form-field>
+          </div>
+      
+  
+      <div class="table-container">
+        <table mat-table [dataSource]="alluserData" matSort>
+          <!-- header row -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+          <!-- column -->
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  
+          <ng-container matColumnDef="accountuser_id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Account User Details ID </th>
+            <td mat-cell *matCellDef="let item">
+                {{ item.accountuser_id }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let item">
+                {{ item.fname }} {{ item.lname }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> School Name </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.schoolname }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="mobile_number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+          <td mat-cell *matCellDef="let item">
+              {{ item.mobile_number }}
+          </td>
+        </ng-container>
+        </table>
+      <mat-paginator class="mat-paginator-sticky" #paginator [pageSizeOptions]="[10, 25, 100]" [pageSize]="10"
+                  [length]="alluserData.data.length"></mat-paginator>
+    </div>
+  </body>
+  

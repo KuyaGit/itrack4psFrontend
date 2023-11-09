@@ -8,6 +8,11 @@ body{
   font-size: 30px;
   font-weight: 600;
   color: #333;
+  display: flex;
+  justify-content: space-between;
+  .search{
+      width: 40%;
+  }
   mat-icon{
     display: flex;
     align-items: center;
