@@ -34,7 +34,7 @@ export class InformationComponent implements OnInit{
       mobile_number : ['', [Validators.required]],
       address : ['', [Validators.required]],
       account_type: [''],
-      schoolName: [''],
+      schoolname: [''],
       profile_piclink: [''],
     })
   }
@@ -69,21 +69,22 @@ export class InformationComponent implements OnInit{
     );
     return status ? status.text : '';
   }
+  typeaccount?: number
   ngOnInit(): void {
+
     this.inputdata = this.data
     this.subsription_get_all_user.add(
       this._dataService.get_user_profile(this.inputdata.code).subscribe((result) => {
         this.userInfo = result.result[0];
         this.fileUrl = this.userInfo.profile_img;
+        this.typeaccount = this.userInfo.account_type;
         if (typeof this.userInfo.account_type === 'number') {
           this.userInfo.account_type = Number(this.userInfo.account_type);
           this.userInfo.accountTypeName = this.getAccountType(this.userInfo.account_type);
         }
         this.profileForm.patchValue(this.userInfo);
-        console.log(this.userInfo);
       })
-    );
-    console.log(this.userInfo);
+    )
   }
   closepopup(){
     this.ref.close();

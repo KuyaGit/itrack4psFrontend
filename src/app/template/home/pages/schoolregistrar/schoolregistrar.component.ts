@@ -35,10 +35,14 @@ export class SchoolregistrarComponent implements OnInit {
     private _addUserService: AddUserService,
     private _dataService: DataService,
   ) {}
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.allStudentBeneficiary.filter = filterValue.trim().toLowerCase();
+}
   viewItem(child_id: any) {
     console.log(child_id);
     this.viewItemDialog(child_id, 'View Information', ViewchildComponent);
+    this.getchildbyschool();
   }
 
   viewItemDialog(child_id: number, title: string, component: any) {
@@ -130,6 +134,8 @@ export class SchoolregistrarComponent implements OnInit {
           console.log(this.schoolname);
           if (Array.isArray(result.result)) {
             this.alluserList = result.result;
+            console.log(this.alluserList)
+            this.alluserList = this.alluserList.filter((user)=> user.beneficiary_status === 2)
             this.alluserList.forEach((user) => {
               user.statusName = Number(user.status);
               user.statusText = this.getStatusType(user.statusName);

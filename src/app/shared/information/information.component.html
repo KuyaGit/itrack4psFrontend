@@ -40,6 +40,10 @@
           <mat-label>Mobile Number</mat-label>
           <input matInput type="text" placeholder="Mobile Number" id="inputEmail4" formControlName="mobile_number" readonly>
         </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true"*ngIf='this.typeaccount == 4'>
+          <mat-label>School Name</mat-label>
+          <input matInput type="text" placeholder="School Name" id="inputEmail4" formControlName="schoolname" readonly>
+        </mat-form-field>
         <mat-form-field class="full-width" appearance="outline" hideRequiredMarker="true">
           <mat-label>Account Type</mat-label>
           <input matInput type="text" placeholder="Account Type" id="inputEmail4" formControlName="account_type" [value]="userInfo?.accountTypeName" readonly>

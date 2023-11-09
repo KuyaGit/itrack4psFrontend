@@ -1,9 +1,14 @@
 <body>
-  <!-- <div class="container"> -->
+  <div class="container">
     <div class="header">
-      <header>4Ps Beneficiaries</header>
+      <header>4Ps Holder</header>
       <button *ngIf="account_type === 1 || account_type === 2" mat-raised-button color="primary" (click)="createbeneficiaryAccount()">Add Beneficiary Account</button>
     </div>
+    <mat-form-field appearance="outline" class="search">
+      <mat-label>Search 4Ps Holder</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search 4Ps Holder" #input>
+    </mat-form-field>
+  </div>
 
     <div class="table-container">
       <table mat-table [dataSource]="alluserData" matSort>

@@ -39,6 +39,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ViewchildComponent } from 'src/app/shared/beneficiary/viewchild/viewchild.component';
 import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
 import { NgChartsModule } from 'ng2-charts';
+import { SchoolaccountsComponent } from './pages/schoolaccounts/schoolaccounts.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { NgChartsModule } from 'ng2-charts';
     BeneficiaryregComponent,
     ChildbeneficiaryComponent,
     ViewchildComponent,
-    SchoolregistrarComponent
+    SchoolregistrarComponent,
+    SchoolaccountsComponent
   ],
   imports: [
     CommonModule,
