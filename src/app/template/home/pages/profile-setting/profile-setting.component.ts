@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, computed, inject, signal } from '@angular/core';
 import { FormBuilder, AbstractControl,FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
-import { Subscription } from 'rxjs';
+import { Subscription, filter } from 'rxjs';
 import { AlertServiceService } from 'src/app/services/alert-service.service';
 import { accountdetails, userprofile } from 'src/app/services/data';
 import { HttpResponse } from '@angular/common/http';
+import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
+import { CropperDialogResult, ImagecropperdialogComponent } from 'src/app/shared/imagecropperdialog/imagecropperdialog.component';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 @Component({
   selector: 'app-profile-setting',
@@ -25,7 +30,6 @@ export class ProfileSettingComponent implements OnInit{
     private _dataService: DataService,
     private fb: FormBuilder,
     private _alertService: AlertServiceService,
-
   ) {
     this.profileForm = this.fb.group({
       accountuser_id : [''],
@@ -119,85 +123,99 @@ export class ProfileSettingComponent implements OnInit{
   imagePreview: string | ArrayBuffer | null = null;
   selectedFileName!: any;
 
-  previewImage(file: File): void {
+  previewImage(blob: Blob): void {
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.imagePreview = e.target.result;
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(blob);
   }
   clearImagePreview(): void {
     this.imagePreview = null;
   }
-  upload(): void {
-    this.progress = 0;
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        this._dataService.upload(this.currentFile).subscribe({
-          next: (event: any) => {
-            if (event instanceof HttpResponse) {
-              this.message = event.body.message;
-            }
-          },
-          error: (err: any) => {
-            console.log(err);
-            this.progress = 0;
-
-            if (err.error && err.error.message) {
-              this.message = err.error.message;
-            } else {
-              this.message = 'Could not upload the file!';
-            }
-            this.currentFile = undefined;
-          },
-        });
-      }
-      this.selectedFiles = undefined;
+  upload() {
+    if (this.croppedResult) {
+      const blob = this.croppedResult.blob;
+      const file = new File([blob], this.selectedFileName, { type: 'image/jpeg' });
+  
+      this._dataService.upload(file).subscribe({
+        next: (event: any) => {
+          if (event instanceof HttpResponse) {
+            this.message = event.body.message;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+          this.progress = 0;
+  
+          if (err.error && err.error.message) {
+            this.message = err.error.message;
+          } else {
+            this.message = 'Could not upload the file!';
+          }
+          this.currentFile = undefined;
+        },
+      });
     }
   }
+  
 
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  dialog = inject(MatDialog)
+  imageHeight = signal(200);
+  @Input({ required: true }) set height( val: number){
+    this.imageHeight.set(val)
+  }
+
+  imageWidth = signal(200)
+  @Input({ required: true }) set width( val: number){
+  this.imageWidth.set(val)
+  }
+  croppedResult: CropperDialogResult | undefined;
   selectFile(event: any): void {
     this.selectedFiles = event.target.files;
-
-    if (this.selectedFiles && this.selectedFiles.length > 0) {
+  
+    if (this.selectedFiles) {
       const file: File = this.selectedFiles[0];
-
-      // Check the file size
-      if (file.size <= 2 * 1024 * 1024) { // 2MB or smaller
-        // Check the aspect ratio
-        const image = new Image();
-        image.src = URL.createObjectURL(file);
-
-        image.onload = () => {
-          const width = image.width;
-          const height = image.height;
-
-          if (width === height) { // Square (2x2 pixels)
-            this.selectedFileName = file.name;
-            this.profileForm.get('profile_piclink')?.setValue(this.selectedFileName);
-
-            // Display a preview of the selected image
-            this.previewImage(file);
-          } else {
-            this.handleError('Image must be a square image.')
-
-          }
-        };
-      } else {
-        this.handleError('File size exceeds the maximum allowed size (2MB).');
-      }
+      const dialogRef = this.dialog.open(ImagecropperdialogComponent, {
+        data: {
+          image: file,
+          width: this.imageWidth(),
+          height: this.imageHeight(),
+        },
+        width: "50%",
+      });
+  
+      dialogRef.afterClosed().subscribe((result: CropperDialogResult) => {
+        
+        if (result) {
+          this.croppedResult = result;
+          // You can use result.blob or any other property based on your CropperDialogResult interface
+          // this.uploadImage(result.blob);
+  
+          this.selectedFileName = file.name;
+          this.profileForm.get('profile_piclink')?.setValue(this.selectedFileName);
+  
+          // Display a preview of the selected image
+          this.previewImage(result.blob);
+        }
+      });
     }
   }
+  croppedImageURL = signal<string | undefined>(undefined);
+  imageSource = computed(() => {
+    return this.croppedImageURL() ?? this.fileUrl;
+  });
 
   update() {
     console.log(this.profileForm.value);
+    this.upload()
     this._dataService.update_profile(this.profileForm.value).subscribe(
       async (result) => {
         if (result && result.status === '200') {
           this.handleSuccess('Profile updated');
-          this.upload()
           await this.getProfileData();
         } else {
           this.handleError('Failed to update profile');
@@ -209,6 +227,7 @@ export class ProfileSettingComponent implements OnInit{
       }
     );
   }
+  
   private handleSuccess(message: any) {
     this._alertService.simpleAlert('success', 'success', message);
   }
@@ -217,3 +236,4 @@ export class ProfileSettingComponent implements OnInit{
     this._alertService.simpleAlert('error', 'Error', message);
   }
 }
+

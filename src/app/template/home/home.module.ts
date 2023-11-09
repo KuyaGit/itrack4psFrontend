@@ -40,7 +40,10 @@ import { ViewchildComponent } from 'src/app/shared/beneficiary/viewchild/viewchi
 import { SchoolregistrarComponent } from './pages/schoolregistrar/schoolregistrar.component';
 import { NgChartsModule } from 'ng2-charts';
 import { SchoolaccountsComponent } from './pages/schoolaccounts/schoolaccounts.component';
-
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImagecropperdialogComponent } from 'src/app/shared/imagecropperdialog/imagecropperdialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+// import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,8 @@ import { SchoolaccountsComponent } from './pages/schoolaccounts/schoolaccounts.c
     ChildbeneficiaryComponent,
     ViewchildComponent,
     SchoolregistrarComponent,
-    SchoolaccountsComponent
+    SchoolaccountsComponent,
+    ImagecropperdialogComponent,
   ],
   imports: [
     CommonModule,
@@ -84,6 +88,8 @@ import { SchoolaccountsComponent } from './pages/schoolaccounts/schoolaccounts.c
     MatSortModule,
     MatDatepickerModule,
     NgChartsModule,
+    ImageCropperModule,
+    MatProgressSpinnerModule
 
   ]
 })

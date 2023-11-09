@@ -49,22 +49,17 @@ mat-label{
 .table-container{
   margin-top: 1%;
   height: 90%;
-  max-width: 100%;
+  width: 100%;
   overflow: auto;
 }
-.square-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+
 
 
 .table {
   overflow: hidden;
 }
 .mat-paginator-sticky {
-  bottom: 0px;
+  bottom: 1px;
   position: sticky;
   z-index: 10;
 }

@@ -37,7 +37,14 @@
                     <input matInput type="text" placeholder="School Name"  formControlName="schoolname">
                   </mat-form-field>
                   <div class="center" *ngIf="!imagePreview">
-                      <img [src]="fileUrl" alt="Photo" (click)="fileInput.click()" class="profile-photo">
+                    <image-cropper
+                      [imageChangedEvent]="imageChangedEvent"
+                      [maintainAspectRatio]="true"
+                      [aspectRatio]="1"
+                      format="jpeg"
+                      style="display: none;"
+                    ></image-cropper>
+                      <img [src]="!imageSource" alt="Photo" (click)="fileInput.click()" class="profile-photo">
                       <i class='bx bxs-camera' ></i>
                       <input type="file" accept="image/*" #fileInput (change)="selectFile($event)" style="display: none;">
                   </div>
